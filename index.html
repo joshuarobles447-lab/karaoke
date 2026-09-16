@@ -845,7 +845,8 @@
   }
   #price-summary * { color: var(--on-surface) !important; }
   #price-summary #rental-price, #price-summary #booking-total, #price-summary strong { color: var(--accent-soft) !important; }
-  #booking-confirmation { display: grid; gap: .8rem; }
+  #booking-confirmation:not(.hidden) { display: grid; gap: .8rem; }
+  #booking-confirmation.hidden { display: none !important; }
   #booking-confirmation .confirmation-card {
     border: 1px solid var(--outline);
     border-radius: 1rem;
@@ -1429,7 +1430,7 @@
 <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
 <div>
 <h3 class="font-black text-lg text-zinc-900">Reserve Karaoke Set</h3>
-<p class="text-xs text-zinc-500">Finish in five simple steps</p>
+<p class="text-xs text-zinc-500">Finish in six simple steps</p>
 </div>
 <button class="p-1 rounded-lg text-zinc-400 hover:text-zinc-700" id="close-modal-btn">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
@@ -1446,11 +1447,13 @@
 <div class="booking-progress-line"></div>
 <div class="booking-progress-step" data-step-indicator="4"><span>4</span><small>Review</small></div>
 <div class="booking-progress-line"></div>
-<div class="booking-progress-step" data-step-indicator="5"><span>5</span><small>Pay &amp; message</small></div>
+<div class="booking-progress-step" data-step-indicator="5"><span>5</span><small>Payment</small></div>
+<div class="booking-progress-line"></div>
+<div class="booking-progress-step" data-step-indicator="6"><span>6</span><small>Confirm</small></div>
 </nav>
 <form class="text-xs" id="quick-booking-form">
 <section class="booking-step space-y-3.5" data-booking-step="1">
-<p class="booking-step-title"><span>Step 1 of 5</span>Choose your karaoke package</p>
+<p class="booking-step-title"><span>Step 1 of 6</span>Choose your karaoke package</p>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="form-package-choice">Select Package</label>
 <select class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="form-package-choice">
@@ -1489,7 +1492,7 @@
 </section>
 </section>
 <section class="booking-step hidden space-y-3.5" data-booking-step="2" hidden>
-<p class="booking-step-title"><span>Step 2 of 5</span>Your contact and delivery details</p>
+<p class="booking-step-title"><span>Step 2 of 6</span>Your contact and delivery details</p>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="customer-name">Your Full Name</label>
 <input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="customer-name" placeholder="e.g. Maria Santos" required="" type="text"/>
@@ -1519,7 +1522,7 @@
 </div>
 </section>
 <section class="booking-step hidden space-y-3.5" data-booking-step="3" hidden>
-<p class="booking-step-title"><span>Step 3 of 5</span>Review payment terms</p>
+<p class="booking-step-title"><span>Step 3 of 6</span>Review payment terms</p>
 <section class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] text-zinc-900">
 <h4 class="font-black">Payment &amp; identity requirements</h4>
 <ul class="mt-1 list-disc space-y-1 pl-4">
@@ -1534,7 +1537,7 @@
 </label>
 </section>
 <section class="booking-step hidden space-y-3.5" data-booking-step="4" hidden>
-<p class="booking-step-title"><span>Step 4 of 5</span>Review your reservation</p>
+<p class="booking-step-title"><span>Step 4 of 6</span>Review your reservation</p>
 <section class="rounded-xl border border-orange-200 bg-orange-50 p-4 text-[11px] leading-relaxed text-zinc-900">
 <h4 class="font-black">Check your details</h4>
 <p class="mt-1">Review your package, date, contact details, and delivery location before continuing to payment.</p>
@@ -1564,15 +1567,7 @@
 <aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-800" id="messenger-requirements"><strong>After saving:</strong> open Messenger and send your ₱300 proof of payment plus a clear photo of your valid government ID.</aside>
 </div>
 </section>
-<div class="booking-step-actions mt-5">
-<button class="hidden" id="booking-back-btn" type="button">Back</button>
-<button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
-<button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
-<span>CONTINUE</span>
-</button>
-</div>
-</form>
-<section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
+<section class="booking-step hidden space-y-4 text-sm" data-booking-step="6" id="booking-confirmation" aria-live="polite" hidden>
 <div class="confirmation-card">
 <p class="confirmation-eyebrow">Check before sending</p>
 <h4>Booking details</h4>
@@ -1587,6 +1582,14 @@
 <div class="confirmation-tools"><p>Keep a copy of your booking.</p><div class="confirmation-tool-actions"><button id="edit-booking-details" type="button">EDIT</button><button id="copy-booking-details" type="button">COPY</button><button id="download-booking-details" type="button">PDF</button></div></div>
 <button id="booking-messenger-link" type="button">GO TO MESSENGER</button>
 </section>
+<div class="booking-step-actions mt-5" id="booking-step-actions">
+<button class="hidden" id="booking-back-btn" type="button">Back</button>
+<button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
+<button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
+<span>CONTINUE</span>
+</button>
+</div>
+</form>
 </div>
 </dialog>
 <!-- END: Interactive Booking Modal / Drawer Sheet -->
@@ -1674,6 +1677,7 @@
     const bookingBackBtn = document.getElementById('booking-back-btn');
     const bookingNextBtn = document.getElementById('booking-next-btn');
     const bookingSubmitBtn = document.getElementById('booking-submit-btn');
+    const bookingStepActions = document.getElementById('booking-step-actions');
     let currentBookingStep = 1;
     let pricing = {
       'set-a': { 12: 599, 22: 799, label: 'SET A · JBL 520 Karaoke Set' },
@@ -1822,9 +1826,10 @@
         indicator.classList.toggle('is-complete', indicatorStep < step);
       });
       stepLines.forEach((line, index) => line.classList.toggle('is-complete', index < step - 1));
-      bookingBackBtn.classList.toggle('hidden', step === 1);
-      bookingNextBtn.classList.toggle('hidden', step === 5);
+      bookingBackBtn.classList.toggle('hidden', step === 1 || step === 6);
+      bookingNextBtn.classList.toggle('hidden', step >= 5);
       bookingSubmitBtn.classList.toggle('hidden', step !== 5);
+      bookingStepActions.classList.toggle('hidden', step === 6);
       bookingModal.scrollTop = 0;
     }
 
@@ -1983,13 +1988,9 @@
       e.preventDefault();
       completedBooking = currentBookingDetails('Created when you open Messenger');
       document.getElementById('booking-reference').textContent = completedBooking.id;
-      bookingForm.classList.add('hidden');
-      bookingBackBtn.classList.add('hidden');
-      bookingNextBtn.classList.add('hidden');
-      bookingSubmitBtn.classList.add('hidden');
-      bookingConfirmation.classList.remove('hidden');
+      setBookingStep(6);
     });
-    editBookingDetailsBtn.addEventListener('click', () => { bookingConfirmation.classList.add('hidden'); bookingForm.classList.remove('hidden'); document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
+    editBookingDetailsBtn.addEventListener('click', () => { document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
     bookingMessengerBtn.addEventListener('click', async () => {
       if (bookingMessengerBtn.disabled) return;
       if (bookingSaved) { window.open('https://www.facebook.com/jmkaraokerental', '_blank'); return; }
