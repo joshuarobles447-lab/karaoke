@@ -757,7 +757,7 @@
   [data-purpose="hero-banner"] p { color: var(--on-muted) !important; }
   .hero-benefits span { color: var(--on-surface) !important; }
   .hero-benefits span + span::before { background: var(--accent) !important; }
-  .hero-cta, #floating-book-btn, [data-purpose="package-catalog"] a[data-book-package], #booking-submit-btn {
+  .hero-cta, #floating-book-btn, [data-purpose="package-catalog"] a[data-book-package], #booking-submit-btn, #booking-messenger-link {
     background: var(--accent) !important;
     color: #1b0a03 !important;
     box-shadow: 0 10px 24px -14px rgba(255, 107, 0, 0.5) !important;
@@ -867,8 +867,9 @@
   #booking-confirmation .confirmation-list b { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 999px; background: var(--accent); color: #1b0a03; font-size: .62rem; }
   #booking-confirmation .confirmation-tools { margin: 0; padding: .7rem; border: 1px solid var(--outline); border-radius: .9rem; background: var(--surface-card) !important; }
   #booking-confirmation .confirmation-tools > p { margin: 0 0 .55rem; color: var(--on-muted); font-size: .65rem; font-weight: 700; }
-  #booking-confirmation .confirmation-tool-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  #booking-confirmation .confirmation-tool-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: .45rem; }
   #booking-confirmation .confirmation-tools button { position: relative; z-index: 1; min-height: 2.55rem; border: 1px solid var(--outline); border-radius: .75rem; background: var(--surface-high); color: var(--on-surface); cursor: pointer; font-size: .65rem; font-weight: 900; pointer-events: auto; }
+  #booking-confirmation #booking-messenger-link { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 2.8rem; border: 0; border-radius: .8rem; cursor: pointer; font-size: .68rem; font-weight: 900; letter-spacing: .04em; }
   #booking-modal label[for="payment-terms"] {
     background: var(--surface-card) !important;
     border-color: var(--outline) !important;
@@ -1564,9 +1565,9 @@
 </div>
 <section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
 <div class="confirmation-card">
-<p class="confirmation-eyebrow">Reservation saved</p>
+<p class="confirmation-eyebrow">Check before sending</p>
 <h4>Booking details</h4>
-<div class="confirmation-reference"><span>Booking reference</span><strong id="booking-reference">—</strong></div>
+<div class="confirmation-reference"><span>Booking reference</span><strong id="booking-reference">Created when you open Messenger</strong></div>
 <div class="confirmation-delivery"><span>Delivery fee</span><strong id="confirmation-total">Pending confirmation</strong></div>
 </div>
 <section class="confirmation-instructions">
@@ -1574,17 +1575,15 @@
 <p>After opening Facebook Messenger, send these two items.</p>
 <ol class="confirmation-list"><li><b>1</b><span>Your booking reference and ₱300 reservation-fee proof of payment.</span></li><li><b>2</b><span>A clear photo of your valid government ID.</span></li></ol>
 </section>
-<div class="confirmation-tools"><p>Keep a copy of your booking.</p><div class="confirmation-tool-actions"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD PDF</button></div></div>
+<div class="confirmation-tools"><p>Keep a copy of your booking.</p><div class="confirmation-tool-actions"><button id="edit-booking-details" type="button">EDIT</button><button id="copy-booking-details" type="button">COPY</button><button id="download-booking-details" type="button">PDF</button></div></div>
+<button id="booking-messenger-link" type="button">GO TO MESSENGER</button>
 </section>
 </section>
 <div class="booking-step-actions mt-5">
 <button class="hidden" id="booking-back-btn" type="button">Back</button>
 <button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
 <button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
-<span>CONTINUE TO MESSENGER</span>
-<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.218V22l3.39-1.86c.92.255 1.89.394 2.875.394 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.05 12.394l-2.67-2.85-5.21 2.85 5.73-6.08 2.74 2.85 5.14-2.85-5.73 6.08z"></path>
-</svg>
+<span>CONTINUE</span>
 </button>
 </div>
 </form>
@@ -1662,9 +1661,12 @@
     const durationChoiceSelect = document.getElementById('form-duration-choice');
     const bookingForm = document.getElementById('quick-booking-form');
     const bookingConfirmation = document.getElementById('booking-confirmation');
+    const editBookingDetailsBtn = document.getElementById('edit-booking-details');
     const copyBookingDetailsBtn = document.getElementById('copy-booking-details');
     const downloadBookingDetailsBtn = document.getElementById('download-booking-details');
+    const bookingMessengerBtn = document.getElementById('booking-messenger-link');
     let completedBooking = null;
+    let bookingSaved = false;
     const bookingDate = document.getElementById('booking-date');
     const bookingSteps = [...document.querySelectorAll('[data-booking-step]')];
     const stepIndicators = [...document.querySelectorAll('[data-step-indicator]')];
@@ -1838,14 +1840,35 @@
       return true;
     }
 
+    function resetBookingDraft() {
+      bookingForm.reset();
+      completedBooking = null;
+      bookingSaved = false;
+      selectedPaymentMethod = 'GCash';
+      paymentMethodOptions.forEach((choice) => {
+        const isSelected = choice.dataset.paymentMethod === 'gcash';
+        choice.classList.toggle('is-selected', isSelected);
+        choice.setAttribute('aria-pressed', String(isSelected));
+      });
+      paymentPanels.forEach((panel) => {
+        const isSelected = panel.dataset.paymentPanel === 'gcash';
+        panel.hidden = !isSelected;
+        panel.classList.toggle('hidden', !isSelected);
+      });
+      document.getElementById('booking-reference').textContent = 'Created when you open Messenger';
+      document.getElementById('confirmation-total').textContent = 'Pending confirmation';
+      document.getElementById('payment-stage-content').classList.remove('hidden');
+      bookingConfirmation.classList.add('hidden');
+      editBookingDetailsBtn.classList.remove('hidden');
+    }
+
     function openBooking(selectedPackage, selectedDuration) {
+      resetBookingDraft();
       if (selectedPackage) {
         packageChoiceSelect.value = selectedPackage;
         durationChoiceSelect.value = selectedDuration || selectedPackageDurations[selectedPackage] || '';
       }
       bookingForm.classList.remove('hidden');
-      document.getElementById('payment-stage-content').classList.remove('hidden');
-      bookingConfirmation.classList.add('hidden');
       updatePriceSummary();
       updateAvailabilityNote();
       setBookingStep(1);
@@ -1921,6 +1944,7 @@
         bookingModal.close();
       }
     });
+    bookingModal.addEventListener('close', resetBookingDraft);
 
     async function saveBookingToAdmin() {
       const selectedPackage = pricing[packageChoiceSelect.value];
@@ -1950,24 +1974,42 @@
       return response.json();
     }
 
-    // The site validates booking details locally; supporting documents are sent in Messenger after booking.
-    bookingForm.addEventListener('submit', async (e) => {
+    function currentBookingDetails(id) {
+      return { id, package: pricing[packageChoiceSelect.value].label, duration: durationChoiceSelect.value + ' hours', date: bookingDate.value, customer: document.getElementById('customer-name').value, facebookName: document.getElementById('facebook-name').value, payment: selectedPaymentMethod, total: document.getElementById('booking-total').textContent };
+    }
+
+    // Continue shows a draft only. A booking is saved only when the customer chooses Go to Messenger.
+    bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      bookingSubmitBtn.disabled = true;
+      completedBooking = currentBookingDetails('Created when you open Messenger');
+      document.getElementById('booking-reference').textContent = completedBooking.id;
+      document.getElementById('payment-stage-content').classList.add('hidden');
+      bookingBackBtn.classList.add('hidden');
+      bookingNextBtn.classList.add('hidden');
+      bookingSubmitBtn.classList.add('hidden');
+      bookingConfirmation.classList.remove('hidden');
+    });
+    editBookingDetailsBtn.addEventListener('click', () => { bookingConfirmation.classList.add('hidden'); document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
+    bookingMessengerBtn.addEventListener('click', async () => {
+      if (bookingMessengerBtn.disabled) return;
+      if (bookingSaved) { window.open('https://www.facebook.com/jmkaraokerental', '_blank'); return; }
+      const messengerWindow = window.open('', '_blank');
+      bookingMessengerBtn.disabled = true; bookingMessengerBtn.textContent = 'SAVING BOOKING...';
       try {
         const savedBooking = await saveBookingToAdmin();
+        completedBooking = currentBookingDetails(savedBooking.id);
+        bookingSaved = true;
         document.getElementById('booking-reference').textContent = savedBooking.id;
-        completedBooking = { id: savedBooking.id, package: pricing[packageChoiceSelect.value].label, duration: durationChoiceSelect.value + ' hours', date: bookingDate.value, customer: document.getElementById('customer-name').value, facebookName: document.getElementById('facebook-name').value, payment: selectedPaymentMethod, total: document.getElementById('booking-total').textContent };
-        document.getElementById('payment-stage-content').classList.add('hidden');
-        bookingBackBtn.classList.add('hidden');
-        bookingNextBtn.classList.add('hidden');
-        bookingSubmitBtn.classList.add('hidden');
-        bookingConfirmation.classList.remove('hidden');
+        document.querySelector('#booking-confirmation .confirmation-eyebrow').textContent = 'Booking saved';
+        editBookingDetailsBtn.classList.add('hidden');
         await loadAvailability();
+        if (messengerWindow) messengerWindow.location.href = 'https://www.facebook.com/jmkaraokerental';
+        else window.alert('Booking saved. Please open our Facebook page to send your payment proof and valid ID.');
       } catch (error) {
+        if (messengerWindow) messengerWindow.close();
         window.alert(error.message);
       } finally {
-        bookingSubmitBtn.disabled = false;
+        bookingMessengerBtn.disabled = false; bookingMessengerBtn.textContent = 'GO TO MESSENGER';
       }
     });
     function completedBookingText() { if (!completedBooking) return ''; return ['JM Karaoke Rental Davao', 'Booking reference: ' + completedBooking.id, 'Package: ' + completedBooking.package, 'Duration: ' + completedBooking.duration, 'Date: ' + completedBooking.date, 'Customer: ' + completedBooking.customer, 'Facebook name: ' + completedBooking.facebookName, 'Payment: ' + completedBooking.payment, 'Total: ' + completedBooking.total].join('\n'); }
