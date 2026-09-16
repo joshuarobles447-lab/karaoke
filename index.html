@@ -1991,7 +1991,7 @@
     editBookingDetailsBtn.addEventListener('click', () => { document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
     bookingMessengerBtn.addEventListener('click', async () => {
       if (bookingMessengerBtn.disabled) return;
-      if (bookingSaved) { window.open('https://www.facebook.com/jmkaraokerental', '_blank'); return; }
+      if (bookingSaved) { bookingModal.close(); return; }
       const messengerWindow = window.open('', '_blank');
       bookingMessengerBtn.disabled = true; bookingMessengerBtn.textContent = 'SAVING BOOKING...';
       try {
@@ -2005,7 +2005,6 @@
         if (messengerWindow) messengerWindow.location.href = 'https://www.facebook.com/jmkaraokerental';
         else window.alert('Booking saved. Please open our Facebook page to send your payment proof and valid ID.');
         bookingMessengerBtn.textContent = 'DONE';
-        setTimeout(() => bookingModal.close(), 900);
       } catch (error) {
         if (messengerWindow) messengerWindow.close();
         window.alert(error.message);
