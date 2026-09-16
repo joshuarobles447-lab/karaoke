@@ -865,8 +865,10 @@
   #booking-confirmation .confirmation-list { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
   #booking-confirmation .confirmation-list li { display: grid; grid-template-columns: 1.3rem 1fr; gap: .5rem; align-items: start; color: var(--on-surface); font-size: .7rem; line-height: 1.35; }
   #booking-confirmation .confirmation-list b { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 999px; background: var(--accent); color: #1b0a03; font-size: .62rem; }
-  #booking-confirmation .confirmation-tools { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
-  #booking-confirmation .confirmation-tools button { min-height: 2.55rem; border: 1px solid var(--outline); border-radius: .75rem; background: var(--surface-high); color: var(--on-surface); font-size: .65rem; font-weight: 900; }
+  #booking-confirmation .confirmation-tools { margin: 0; padding: .7rem; border: 1px solid var(--outline); border-radius: .9rem; background: var(--surface-card) !important; }
+  #booking-confirmation .confirmation-tools > p { margin: 0 0 .55rem; color: var(--on-muted); font-size: .65rem; font-weight: 700; }
+  #booking-confirmation .confirmation-tool-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  #booking-confirmation .confirmation-tools button { position: relative; z-index: 1; min-height: 2.55rem; border: 1px solid var(--outline); border-radius: .75rem; background: var(--surface-high); color: var(--on-surface); cursor: pointer; font-size: .65rem; font-weight: 900; pointer-events: auto; }
   #booking-modal label[for="payment-terms"] {
     background: var(--surface-card) !important;
     border-color: var(--outline) !important;
@@ -1572,7 +1574,7 @@
 <p>After opening Facebook Messenger, send these two items.</p>
 <ol class="confirmation-list"><li><b>1</b><span>Your booking reference and ₱300 reservation-fee proof of payment.</span></li><li><b>2</b><span>A clear photo of your valid government ID.</span></li></ol>
 </section>
-<div class="confirmation-tools"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD PDF</button></div>
+<div class="confirmation-tools"><p>Keep a copy of your booking.</p><div class="confirmation-tool-actions"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD PDF</button></div></div>
 </section>
 </section>
 <div class="booking-step-actions mt-5">
@@ -1969,7 +1971,14 @@
       }
     });
     function completedBookingText() { if (!completedBooking) return ''; return ['JM Karaoke Rental Davao', 'Booking reference: ' + completedBooking.id, 'Package: ' + completedBooking.package, 'Duration: ' + completedBooking.duration, 'Date: ' + completedBooking.date, 'Customer: ' + completedBooking.customer, 'Facebook name: ' + completedBooking.facebookName, 'Payment: ' + completedBooking.payment, 'Total: ' + completedBooking.total].join('\n'); }
-    copyBookingDetailsBtn.addEventListener('click', async () => { const text = completedBookingText(); if (!text) return; try { await navigator.clipboard.writeText(text); copyBookingDetailsBtn.textContent = 'COPIED'; setTimeout(() => { copyBookingDetailsBtn.textContent = 'COPY DETAILS'; }, 1600); } catch { window.prompt('Copy your booking details:', text); } });
+    copyBookingDetailsBtn.addEventListener('click', async () => {
+      const text = completedBookingText(); if (!text) return;
+      try { await navigator.clipboard.writeText(text); } catch {
+        const helper = document.createElement('textarea'); helper.value = text; helper.setAttribute('readonly', ''); helper.style.position = 'fixed'; helper.style.opacity = '0';
+        document.body.appendChild(helper); helper.select(); const copied = document.execCommand('copy'); helper.remove(); if (!copied) { window.prompt('Copy your booking details:', text); }
+      }
+      copyBookingDetailsBtn.textContent = 'COPIED'; setTimeout(() => { copyBookingDetailsBtn.textContent = 'COPY DETAILS'; }, 1600);
+    });
     function makeBookingPdf(text) {
       const clean = (value) => String(value).replace(/₱/g, 'PHP ').replace(/[^\x20-\x7e]/g, '').replace(/([\\()])/g, '\\$1');
       const lines = text.split('\n').flatMap((line) => {
