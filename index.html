@@ -909,6 +909,14 @@
   .payment-method-option.is-selected span { color: var(--accent-soft) !important; }
   #quick-booking-form [data-booking-step="5"] #review-total { color: var(--accent-soft) !important; }
   #quick-booking-form [data-booking-step="5"] .border-zinc-100 { border-color: var(--outline) !important; }
+  #quick-booking-form [data-booking-step="5"] #reservation-summary {
+    background: #fff !important;
+    border-color: #e0b69f !important;
+    color: #3f3028 !important;
+  }
+  #quick-booking-form [data-booking-step="5"] #reservation-summary * { color: #3f3028 !important; }
+  #quick-booking-form [data-booking-step="5"] #reservation-summary dt { color: #80675a !important; }
+  #quick-booking-form [data-booking-step="5"] #reservation-summary #review-total { color: #ff5a00 !important; }
   .gcash-copy-button { background: var(--accent) !important; color: #1b0a03 !important; }
   .gcash-copy-button:disabled { cursor: not-allowed; opacity: .5; }
   #booking-next-btn, #booking-submit-btn { background: var(--accent) !important; color: #1b0a03 !important; }
@@ -1496,7 +1504,7 @@
 <section class="booking-step hidden space-y-3.5" data-booking-step="5" hidden>
 <p class="booking-step-title"><span>Step 5 of 5</span>Pay and send your requirements</p>
 <div class="space-y-3.5" id="payment-stage-content">
-<div class="rounded-xl border border-zinc-200 bg-white p-4 text-xs text-zinc-700">
+<div class="rounded-xl border border-zinc-200 bg-white p-4 text-xs text-zinc-700" id="reservation-summary">
 <div class="flex items-center justify-between gap-3 border-b border-zinc-100 pb-3"><span class="font-bold">Reservation fee today</span><strong id="review-total" class="text-base text-brand-orange">₱300</strong></div>
 <dl class="mt-3 space-y-2">
 <div class="flex justify-between gap-4"><dt>Package</dt><dd class="text-right font-semibold" id="review-package"></dd></div>
