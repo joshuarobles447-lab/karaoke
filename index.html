@@ -2004,11 +2004,14 @@
         await loadAvailability();
         if (messengerWindow) messengerWindow.location.href = 'https://www.facebook.com/jmkaraokerental';
         else window.alert('Booking saved. Please open our Facebook page to send your payment proof and valid ID.');
+        bookingMessengerBtn.textContent = 'DONE';
+        setTimeout(() => bookingModal.close(), 900);
       } catch (error) {
         if (messengerWindow) messengerWindow.close();
         window.alert(error.message);
       } finally {
-        bookingMessengerBtn.disabled = false; bookingMessengerBtn.textContent = 'GO TO MESSENGER';
+        bookingMessengerBtn.disabled = false;
+        if (!bookingSaved) bookingMessengerBtn.textContent = 'GO TO MESSENGER';
       }
     });
     function completedBookingText() { if (!completedBooking) return ''; return ['JM Karaoke Rental Davao', 'Booking reference: ' + completedBooking.id, 'Package: ' + completedBooking.package, 'Duration: ' + completedBooking.duration, 'Date: ' + completedBooking.date, 'Customer: ' + completedBooking.customer, 'Facebook name: ' + completedBooking.facebookName, 'Payment: ' + completedBooking.payment, 'Total: ' + completedBooking.total].join('\n'); }
