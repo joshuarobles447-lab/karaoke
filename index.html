@@ -2023,28 +2023,76 @@
       }
       copyBookingDetailsBtn.textContent = 'COPIED'; setTimeout(() => { copyBookingDetailsBtn.textContent = 'COPY DETAILS'; }, 1600);
     });
-    function makeBookingPdf(text) {
-      const clean = (value) => String(value).replace(/₱/g, 'PHP ').replace(/[^\x20-\x7e]/g, '').replace(/([\\()])/g, '\\$1');
-      const lines = text.split('\n').flatMap((line) => {
-        const words = clean(line).split(/\s+/); const wrapped = []; let current = '';
-        words.forEach((word) => { const next = current ? current + ' ' + word : word; if (next.length > 68 && current) { wrapped.push(current); current = word; } else current = next; });
-        if (current) wrapped.push(current); return wrapped.length ? wrapped : [''];
+    function makeBookingPdf(details) {
+      const clean = (value) => String(value || '').replace(/₱/g, 'PHP ').replace(/[^\x20-\x7e]/g, '').replace(/([\\()])/g, '\\$1');
+      const text = (font, size, x, y, value) => `BT /${font} ${size} Tf ${x} ${y} Td (${clean(value)}) Tj ET`;
+      const rect = (color, x, y, width, height) => `q ${color} rg ${x} ${y} ${width} ${height} re f Q`;
+      const border = (color, x, y, width, height) => `q ${color} RG 0.8 w ${x} ${y} ${width} ${height} re S Q`;
+      const line = (color, x1, y1, x2, y2) => `q ${color} RG 0.55 w ${x1} ${y1} m ${x2} ${y2} l S Q`;
+      const commands = [
+        rect('1 0.34 0', 0, 650, 612, 142),
+        text('F2', 23, 42, 744, 'JM KARAOKE'),
+        text('F2', 11, 42, 724, 'RENTAL DAVAO'),
+        text('F1', 9, 42, 704, 'Premium karaoke rental and delivery service'),
+        text('F2', 15, 42, 672, 'BOOKING CONFIRMATION'),
+        rect('1 0.95 0.91', 42, 560, 528, 68),
+        border('0.95 0.55 0.30', 42, 560, 528, 68),
+        text('F2', 8, 59, 606, 'BOOKING REFERENCE'),
+        text('F2', 12, 59, 583, details.id),
+        text('F1', 8, 422, 606, 'STATUS'),
+        text('F2', 10, 422, 583, 'PENDING VERIFICATION'),
+        rect('0.97 0.97 0.97', 42, 298, 528, 235),
+        border('0.83 0.83 0.83', 42, 298, 528, 235),
+        text('F2', 13, 59, 507, 'BOOKING DETAILS')
+      ];
+      const rows = [
+        ['Package', details.package],
+        ['Rental duration', details.duration],
+        ['Event date', details.date],
+        ['Customer', details.customer],
+        ['Facebook name', details.facebookName],
+        ['Payment method', details.payment]
+      ];
+      rows.forEach((row, index) => {
+        const y = 477 - index * 30;
+        commands.push(text('F1', 8, 59, y, row[0].toUpperCase()));
+        commands.push(text('F2', 10, 205, y, row[1]));
+        if (index < rows.length - 1) commands.push(line('0.85 0.85 0.85', 59, y - 10, 553, y - 10));
       });
-      const content = ['BT', '/F1 16 Tf', '50 760 Td', '(JM Karaoke Rental Davao) Tj', '/F1 10 Tf', '0 -26 Td']
-        .concat(lines.map((line) => '(' + line + ') Tj 0 -15 Td')).concat(['ET']).join('\n');
+      commands.push(
+        rect('0.11 0.10 0.11', 42, 100, 528, 166),
+        '0.98 0.95 0.92 rg',
+        text('F2', 12, 59, 239, 'BEFORE YOU OPEN MESSENGER'),
+        text('F1', 9, 59, 219, 'Save this PDF or copy your booking reference first.'),
+        '1 0.50 0.20 rg',
+        text('F2', 10, 59, 188, '1'),
+        text('F2', 10, 59, 163, '2'),
+        text('F2', 10, 59, 138, '3'),
+        '0.98 0.95 0.92 rg',
+        text('F1', 9, 82, 188, 'Send your booking reference and PHP 300 proof of payment.'),
+        text('F1', 9, 82, 163, 'Send a clear photo of your valid government ID.'),
+        text('F1', 9, 82, 138, 'Delivery fee will be confirmed after checking your map pin.'),
+        '0 0 0 rg',
+        text('F2', 9, 42, 70, 'JM KARAOKE RENTAL DAVAO'),
+        text('F1', 8, 42, 54, 'Facebook: JM Karaoke Rental Davao'),
+        text('F2', 12, 425, 59, details.total)
+      );
+      const content = commands.join('\n');
       const objects = [
         '<< /Type /Catalog /Pages 2 0 R >>',
         '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
-        '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>',
+        '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>',
         '<< /Length ' + content.length + ' >>\nstream\n' + content + '\nendstream',
-        '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'
+        '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+        '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>'
       ];
       let pdf = '%PDF-1.4\n'; const offsets = [0];
       objects.forEach((object, index) => { offsets.push(pdf.length); pdf += (index + 1) + ' 0 obj\n' + object + '\nendobj\n'; });
-      const xref = pdf.length; pdf += 'xref\n0 ' + (objects.length + 1) + '\n0000000000 65535 f \n' + offsets.slice(1).map((offset) => String(offset).padStart(10, '0') + ' 00000 n ').join('\n') + '\ntrailer\n<< /Size ' + (objects.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF';
+      const xref = Buffer.byteLength(pdf, 'ascii');
+      pdf += 'xref\n0 ' + (objects.length + 1) + '\n0000000000 65535 f \n' + offsets.slice(1).map((offset) => String(offset).padStart(10, '0') + ' 00000 n ').join('\n') + '\ntrailer\n<< /Size ' + (objects.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF';
       return new Blob([pdf], { type: 'application/pdf' });
     }
-    downloadBookingDetailsBtn.addEventListener('click', () => { const text = completedBookingText(); if (!text) return; const link = document.createElement('a'); link.href = URL.createObjectURL(makeBookingPdf(text)); link.download = 'JM-Karaoke-' + completedBooking.id + '.pdf'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); });
+    downloadBookingDetailsBtn.addEventListener('click', () => { const text = completedBookingText(); if (!text) return; const link = document.createElement('a'); link.href = URL.createObjectURL(makeBookingPdf(completedBooking)); link.download = 'JM-Karaoke-' + completedBooking.id + '.pdf'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); });
   </script>
 <!-- END: Interactive Scripts -->
 </body></html>
