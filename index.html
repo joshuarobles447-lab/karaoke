@@ -1494,6 +1494,7 @@
 </section>
 <section class="booking-step hidden space-y-3.5" data-booking-step="5" hidden>
 <p class="booking-step-title"><span>Step 5 of 5</span>Pay and send your requirements</p>
+<div class="space-y-3.5" id="payment-stage-content">
 <div class="rounded-xl border border-zinc-200 bg-white p-4 text-xs text-zinc-700">
 <div class="flex items-center justify-between gap-3 border-b border-zinc-100 pb-3"><span class="font-bold">Reservation fee today</span><strong id="review-total" class="text-base text-brand-orange">₱300</strong></div>
 <dl class="mt-3 space-y-2">
@@ -1513,6 +1514,21 @@
 </section>
 <section class="hidden rounded-xl border border-orange-200 bg-orange-50 p-4 text-center" data-payment-panel="maribank" hidden=""><img alt="MariBank QR code for the ₱300 reservation fee" class="payment-qr-image" src="assets/maribank-qr.png"/></section>
 <aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-800"><strong>After saving:</strong> open Messenger and send your ₱300 proof of payment plus a clear photo of your valid government ID.</aside>
+</div>
+<section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
+<div class="rounded-xl border border-orange-200 bg-white p-4 text-zinc-900">
+<h4 class="font-black">Booking details ready</h4>
+<p class="mt-2 rounded-lg bg-orange-50 px-3 py-2 text-xs text-zinc-800">Booking reference: <strong class="text-zinc-900" id="booking-reference">—</strong></p>
+<p class="mt-1 text-xs">Your booking is saved. <strong id="confirmation-total">Delivery fee pending</strong>. Delivery is free within 3 km from Tibungco. We will check your Google Maps pin, confirm any farther-location fee, then verify your payment and valid ID.</p>
+</div>
+<ol class="list-decimal space-y-2 pl-5 text-xs text-zinc-700">
+<li>Open Facebook Messenger using the button below.</li>
+<li>Send your booking reference, name, selected package, rental date, Facebook profile, and Facebook name.</li>
+<li>Attach your proof of payment and a clear photo of your valid government ID.</li>
+</ol>
+<a class="block w-full rounded-xl bg-brand-orange px-4 py-3 text-center text-xs font-black tracking-wider text-white" href="https://www.facebook.com/jmkaraokerental" id="booking-messenger-link" rel="noopener noreferrer" target="_blank">OPEN FACEBOOK TO SEND REQUIREMENTS</a>
+<div class="grid grid-cols-2 gap-2"><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="copy-booking-details" type="button">COPY DETAILS</button><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="download-booking-details" type="button">DOWNLOAD</button></div>
+</section>
 </section>
 <div class="booking-step-actions mt-5">
 <button class="hidden" id="booking-back-btn" type="button">Back</button>
@@ -1525,20 +1541,6 @@
 </button>
 </div>
 </form>
-<section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
-<div class="rounded-xl border border-orange-200 bg-white p-4 text-zinc-900">
-<h4 class="font-black">Booking details ready</h4>
-<p class="mt-2 rounded-lg bg-orange-50 px-3 py-2 text-xs text-zinc-800">Booking reference: <strong class="text-zinc-900" id="booking-reference">—</strong></p>
-<p class="mt-1 text-xs">Your booking is saved. <strong id="confirmation-total">Delivery fee pending</strong>. Delivery is free within 3 km from Tibungco. We will check your Google Maps pin, send any farther-location fee through Messenger, then verify your payment and valid ID.</p>
-</div>
-<ol class="list-decimal space-y-2 pl-5 text-xs text-zinc-700">
-<li>Open Facebook Messenger using the button below.</li>
-<li>Send your booking reference, name, selected package, rental date, Facebook profile, and Facebook name.</li>
-<li>After booking, attach your proof of payment and a clear photo of your valid government ID.</li>
-</ol>
-<a class="block w-full rounded-xl bg-brand-orange px-4 py-3 text-center text-xs font-black tracking-wider text-white" href="https://www.facebook.com/jmkaraokerental" id="booking-messenger-link" rel="noopener noreferrer" target="_blank">OPEN FACEBOOK TO SEND REQUIREMENTS</a>
-<div class="grid grid-cols-2 gap-2"><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="copy-booking-details" type="button">COPY DETAILS</button><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="download-booking-details" type="button">DOWNLOAD</button></div>
-</section>
 </div>
 </dialog>
 <!-- END: Interactive Booking Modal / Drawer Sheet -->
@@ -1795,6 +1797,7 @@
         durationChoiceSelect.value = selectedDuration || selectedPackageDurations[selectedPackage] || '';
       }
       bookingForm.classList.remove('hidden');
+      document.getElementById('payment-stage-content').classList.remove('hidden');
       bookingConfirmation.classList.add('hidden');
       updatePriceSummary();
       updateAvailabilityNote();
@@ -1908,7 +1911,10 @@
         const savedBooking = await saveBookingToAdmin();
         document.getElementById('booking-reference').textContent = savedBooking.id;
         completedBooking = { id: savedBooking.id, package: pricing[packageChoiceSelect.value].label, duration: durationChoiceSelect.value + ' hours', date: bookingDate.value, customer: document.getElementById('customer-name').value, facebookName: document.getElementById('facebook-name').value, payment: selectedPaymentMethod, total: document.getElementById('booking-total').textContent };
-        bookingForm.classList.add('hidden');
+        document.getElementById('payment-stage-content').classList.add('hidden');
+        bookingBackBtn.classList.add('hidden');
+        bookingNextBtn.classList.add('hidden');
+        bookingSubmitBtn.classList.add('hidden');
         bookingConfirmation.classList.remove('hidden');
         await loadAvailability();
       } catch (error) {
