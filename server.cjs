@@ -16,6 +16,8 @@ loadEnvFile();
 const supabaseUrl = String(process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '').replace(/\/$/, '');
 const supabaseSecret = String(process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || '');
 const customerIndexKey = String(process.env.CUSTOMER_INDEX_KEY || '');
+const port = Number(process.env.PORT) || 3000;
+const host = process.env.PORT ? '0.0.0.0' : '127.0.0.1';
 let supabaseActive = false;
 const dataDir = path.join(root, 'data');
 const bookingsFile = path.join(dataDir, 'bookings.json');
@@ -475,5 +477,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 initializeSupabase().finally(() => {
-  server.listen(3000, '127.0.0.1', () => console.log('JM Karaoke: http://127.0.0.1:3000'));
+  server.listen(port, host, () => console.log(`JM Karaoke: http://${host}:${port}`));
 });

@@ -4,6 +4,7 @@ data/*.json
 # Local configuration and logs
 .env
 .env.*
+render.env
 *.log
 
 # Dependency folders

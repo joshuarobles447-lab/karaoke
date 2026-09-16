@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: jm-karaoke-rental
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: CUSTOMER_INDEX_KEY
+        sync: false

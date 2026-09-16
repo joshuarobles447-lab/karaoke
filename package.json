@@ -1,1 +1,1 @@
-{"name":"jm-karaoke-rental-davao","private":true,"scripts":{"dev":"node server.cjs"}}
+{"name":"jm-karaoke-rental-davao","private":true,"scripts":{"dev":"node server.cjs","start":"node server.cjs"}}
