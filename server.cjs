@@ -63,7 +63,6 @@ async function supabaseRequest(endpoint, options = {}) {
     ...options,
     headers: {
       apikey: supabaseSecret,
-      Authorization: `Bearer ${supabaseSecret}`,
       'Content-Type': 'application/json',
       ...(options.headers || {}),
     },
