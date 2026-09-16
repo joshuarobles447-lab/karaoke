@@ -757,7 +757,7 @@
   [data-purpose="hero-banner"] p { color: var(--on-muted) !important; }
   .hero-benefits span { color: var(--on-surface) !important; }
   .hero-benefits span + span::before { background: var(--accent) !important; }
-  .hero-cta, #floating-book-btn, [data-purpose="package-catalog"] a[data-book-package], #booking-submit-btn, #booking-messenger-link {
+  .hero-cta, #floating-book-btn, [data-purpose="package-catalog"] a[data-book-package], #booking-submit-btn {
     background: var(--accent) !important;
     color: #1b0a03 !important;
     box-shadow: 0 10px 24px -14px rgba(255, 107, 0, 0.5) !important;
@@ -865,7 +865,6 @@
   #booking-confirmation .confirmation-list { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
   #booking-confirmation .confirmation-list li { display: grid; grid-template-columns: 1.3rem 1fr; gap: .5rem; align-items: start; color: var(--on-surface); font-size: .7rem; line-height: 1.35; }
   #booking-confirmation .confirmation-list b { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 999px; background: var(--accent); color: #1b0a03; font-size: .62rem; }
-  #booking-confirmation #booking-messenger-link { min-height: 2.85rem; display: flex; align-items: center; justify-content: center; border-radius: .8rem; }
   #booking-confirmation .confirmation-tools { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
   #booking-confirmation .confirmation-tools button { min-height: 2.55rem; border: 1px solid var(--outline); border-radius: .75rem; background: var(--surface-high); color: var(--on-surface); font-size: .65rem; font-weight: 900; }
   #booking-modal label[for="payment-terms"] {
@@ -1573,8 +1572,7 @@
 <p>After opening Facebook Messenger, send these two items.</p>
 <ol class="confirmation-list"><li><b>1</b><span>Your booking reference and ₱300 reservation-fee proof of payment.</span></li><li><b>2</b><span>A clear photo of your valid government ID.</span></li></ol>
 </section>
-<a class="block w-full rounded-xl bg-brand-orange px-4 py-3 text-center text-xs font-black tracking-wider text-white" href="https://www.facebook.com/jmkaraokerental" id="booking-messenger-link" rel="noopener noreferrer" target="_blank">OPEN FACEBOOK TO SEND REQUIREMENTS</a>
-<div class="confirmation-tools"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD</button></div>
+<div class="confirmation-tools"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD PDF</button></div>
 </section>
 </section>
 <div class="booking-step-actions mt-5">
@@ -1972,7 +1970,28 @@
     });
     function completedBookingText() { if (!completedBooking) return ''; return ['JM Karaoke Rental Davao', 'Booking reference: ' + completedBooking.id, 'Package: ' + completedBooking.package, 'Duration: ' + completedBooking.duration, 'Date: ' + completedBooking.date, 'Customer: ' + completedBooking.customer, 'Facebook name: ' + completedBooking.facebookName, 'Payment: ' + completedBooking.payment, 'Total: ' + completedBooking.total].join('\n'); }
     copyBookingDetailsBtn.addEventListener('click', async () => { const text = completedBookingText(); if (!text) return; try { await navigator.clipboard.writeText(text); copyBookingDetailsBtn.textContent = 'COPIED'; setTimeout(() => { copyBookingDetailsBtn.textContent = 'COPY DETAILS'; }, 1600); } catch { window.prompt('Copy your booking details:', text); } });
-    downloadBookingDetailsBtn.addEventListener('click', () => { const text = completedBookingText(); if (!text) return; const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' })); link.download = 'JM-Karaoke-' + completedBooking.id + '.txt'; link.click(); URL.revokeObjectURL(link.href); });
+    function makeBookingPdf(text) {
+      const clean = (value) => String(value).replace(/₱/g, 'PHP ').replace(/[^\x20-\x7e]/g, '').replace(/([\\()])/g, '\\$1');
+      const lines = text.split('\n').flatMap((line) => {
+        const words = clean(line).split(/\s+/); const wrapped = []; let current = '';
+        words.forEach((word) => { const next = current ? current + ' ' + word : word; if (next.length > 68 && current) { wrapped.push(current); current = word; } else current = next; });
+        if (current) wrapped.push(current); return wrapped.length ? wrapped : [''];
+      });
+      const content = ['BT', '/F1 16 Tf', '50 760 Td', '(JM Karaoke Rental Davao) Tj', '/F1 10 Tf', '0 -26 Td']
+        .concat(lines.map((line) => '(' + line + ') Tj 0 -15 Td')).concat(['ET']).join('\n');
+      const objects = [
+        '<< /Type /Catalog /Pages 2 0 R >>',
+        '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+        '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>',
+        '<< /Length ' + content.length + ' >>\nstream\n' + content + '\nendstream',
+        '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'
+      ];
+      let pdf = '%PDF-1.4\n'; const offsets = [0];
+      objects.forEach((object, index) => { offsets.push(pdf.length); pdf += (index + 1) + ' 0 obj\n' + object + '\nendobj\n'; });
+      const xref = pdf.length; pdf += 'xref\n0 ' + (objects.length + 1) + '\n0000000000 65535 f \n' + offsets.slice(1).map((offset) => String(offset).padStart(10, '0') + ' 00000 n ').join('\n') + '\ntrailer\n<< /Size ' + (objects.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF';
+      return new Blob([pdf], { type: 'application/pdf' });
+    }
+    downloadBookingDetailsBtn.addEventListener('click', () => { const text = completedBookingText(); if (!text) return; const link = document.createElement('a'); link.href = URL.createObjectURL(makeBookingPdf(text)); link.download = 'JM-Karaoke-' + completedBooking.id + '.pdf'; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); });
   </script>
 <!-- END: Interactive Scripts -->
 </body></html>
