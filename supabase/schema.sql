@@ -29,13 +29,17 @@ create table if not exists public.jm_bookings (
 create table if not exists public.jm_customers (
   customer_key text primary key,
   full_name text not null,
-  email text not null,
+  email text,
   facebook text not null,
+  facebook_name text not null default '',
   first_booking_at timestamptz not null,
   last_booking_at timestamptz not null,
   booking_count integer not null default 1 check (booking_count > 0),
   updated_at timestamptz not null default now()
 );
+
+alter table public.jm_customers alter column email drop not null;
+alter table public.jm_customers add column if not exists facebook_name text not null default '';
 
 create index if not exists jm_bookings_package_date_idx
   on public.jm_bookings (package_id, booking_date);

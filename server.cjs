@@ -27,7 +27,7 @@ const sessions = new Map();
 const rateLimits = new Map();
 const defaultPackages = Object.freeze([
   Object.freeze({ id: 'set-a', code: 'SET A', name: 'JBL 520 Karaoke Set', label: 'SET A · JBL 520 Karaoke Set', description: 'A clean JBL setup for simple celebrations.', features: Object.freeze(['JBL PartyBox 520 (High-Bass Speaker)', 'JBL Wireless Microphones (2pcs)']), prices: Object.freeze({ 12: 599, 22: 799 }) }),
-  Object.freeze({ id: 'set-b', code: 'SET B', name: 'Complete Karaoke Set', label: 'SET B · Complete Karaoke Set', description: 'The full party setup with TV, karaoke system, and lights.', features: Object.freeze(['JBL PartyBox 520', 'JBL Wireless Microphones (2pcs)', 'SMART TV 32INCH. w/ TV STAND', 'PLATINUM KARAOKE XL SD w/ SONGBOOK', 'Disco Light', 'YouTube Premium']), prices: Object.freeze({ 12: 899, 22: 1199 }) }),
+  Object.freeze({ id: 'set-b', code: 'SET B', name: 'Complete Karaoke Set', label: 'SET B · Complete Karaoke Set', description: 'The full party setup with TV, karaoke system, and lights.', features: Object.freeze(['JBL PartyBox 520', 'JBL Wireless Microphones (2pcs)', 'SMART TV 32INCH. w/ TV STAND', 'Platinum karaoke XL SD w/ songbook', 'Disco Light', 'YouTube Premium']), prices: Object.freeze({ 12: 899, 22: 1199 }) }),
 ]);
 const securityDeposit = 1000;
 const publicFiles = {
@@ -86,14 +86,14 @@ async function persistPackages() {
 }
 
 function customerKeyFor(booking) {
-  const identity = `${safeText(booking.email, 254).toLowerCase()}|${safeText(booking.facebook, 300).toLowerCase()}`;
+  const identity = `${safeText(booking.facebook, 300).toLowerCase()}|${safeText(booking.facebookName || booking.customerName, 300).toLowerCase()}`;
   return crypto.createHmac('sha256', customerIndexKey || 'jm-karaoke-local-customer-key').update(identity).digest('hex');
 }
 
 function customerRecords() {
   const customers = new Map();
   for (const booking of storage.bookings) {
-    if (!booking.customerName || !booking.email || !booking.facebook) continue;
+    if (!booking.customerName || !booking.facebook) continue;
     const customerKey = customerKeyFor(booking);
     const bookedAt = new Date(booking.createdAt || Date.now()).toISOString();
     const current = customers.get(customerKey);
@@ -101,8 +101,9 @@ function customerRecords() {
       customers.set(customerKey, {
         customer_key: customerKey,
         full_name: safeText(booking.customerName, 300),
-        email: safeText(booking.email, 254).toLowerCase(),
+        email: safeText(booking.email, 254).toLowerCase() || null,
         facebook: safeText(booking.facebook, 300),
+        facebook_name: safeText(booking.facebookName || booking.customerName, 300),
         first_booking_at: bookedAt,
         last_booking_at: bookedAt,
         booking_count: 1,
@@ -113,8 +114,9 @@ function customerRecords() {
     if (bookedAt < current.first_booking_at) current.first_booking_at = bookedAt;
     if (bookedAt >= current.last_booking_at) {
       current.full_name = safeText(booking.customerName, 300);
-      current.email = safeText(booking.email, 254).toLowerCase();
+      current.email = safeText(booking.email, 254).toLowerCase() || null;
       current.facebook = safeText(booking.facebook, 300);
+      current.facebook_name = safeText(booking.facebookName || booking.customerName, 300);
       current.last_booking_at = bookedAt;
     }
   }
@@ -144,7 +146,7 @@ async function initializeSupabase() {
     ]);
     supabaseActive = true;
     if (admins[0]) storage.admin = { email: admins[0].email, salt: admins[0].salt, passwordHash: admins[0].password_hash };
-    if (packages.length) storage.packages = packages.map(row => row.payload).filter(Boolean);
+    if (packages.length) storage.packages = packages.map(row => row.payload).filter(Boolean).map(normalizePackage);
     else if (!storage.packages.length) storage.packages = defaultPackages.map(item => ({ ...item, features: [...item.features], prices: { ...item.prices } }));
     if (bookings.length) storage.bookings = bookings.map(row => row.payload).filter(Boolean);
     await Promise.all([persistAdmin(), persistPackages(), persistBookings()]);
@@ -152,6 +154,11 @@ async function initializeSupabase() {
   } catch (error) {
     console.warn(`JM Karaoke: Supabase storage is not ready; using local storage. ${error.message}`);
   }
+}
+
+function normalizePackage(item) {
+  if (!item || !Array.isArray(item.features)) return item;
+  return { ...item, features: item.features.map(feature => feature === 'PLATINUM KARAOKE XL SD w/ SONGBOOK' ? 'Platinum karaoke XL SD w/ songbook' : feature) };
 }
 
 function savedPackages() {
@@ -299,10 +306,10 @@ function buildBooking(data) {
     createdAt: new Date().toISOString(), status: 'Pending',
     packageId, package: packageName, duration, date: safeText(data.date, 10),
     customerName: safeText(data.customerName), address: safeText(data.address, 500), mapLink: safeText(data.mapLink, 1000), deliveryFee: '',
-    facebook: safeText(data.facebook), email: safeText(data.email, 254).toLowerCase(),
+    facebook: safeText(data.facebook), facebookName: safeText(data.facebookName, 300), email: safeText(data.email, 254).toLowerCase(),
     paymentMethod, baseTotal: rentalFee ? rentalFee + securityDeposit : 0, total: rentalFee ? `${formatPeso(rentalFee + securityDeposit)} + delivery` : '', notes: '',
   };
-  if (!rentalFee || !validBookingDate(booking.date) || !booking.customerName || !booking.address || !booking.facebook || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(booking.email) || !validMapUrl(booking.mapLink) || !['GCash', 'MariBank'].includes(paymentMethod)) return null;
+  if (!rentalFee || !validBookingDate(booking.date) || !booking.customerName || !booking.address || !booking.facebook || !booking.facebookName || !validMapUrl(booking.mapLink) || !['GCash', 'MariBank'].includes(paymentMethod)) return null;
   return booking;
 }
 
