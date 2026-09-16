@@ -838,20 +838,36 @@
     color: var(--on-surface) !important;
     border-color: var(--outline) !important;
   }
-  #price-summary, #quick-booking-form [data-booking-step="3"] > section, #booking-confirmation > div {
+  #price-summary, #quick-booking-form [data-booking-step="3"] > section {
     background: var(--surface-card) !important;
     color: var(--on-surface) !important;
     border-color: var(--outline) !important;
   }
-  #price-summary *, #booking-confirmation * { color: var(--on-surface) !important; }
+  #price-summary * { color: var(--on-surface) !important; }
   #price-summary #rental-price, #price-summary #booking-total, #price-summary strong { color: var(--accent-soft) !important; }
-  #booking-modal #booking-confirmation > div > p:first-of-type {
-    background: #fff3eb !important;
-    color: #4a3023 !important;
-    border: 1px solid #f3a26e !important;
+  #booking-confirmation { display: grid; gap: .8rem; }
+  #booking-confirmation .confirmation-card {
+    border: 1px solid var(--outline);
+    border-radius: 1rem;
+    background: var(--surface-card);
+    padding: 1rem;
   }
-  #booking-modal #booking-confirmation > div > p:first-of-type * { color: #1b0a03 !important; }
-  #booking-modal #booking-confirmation #booking-reference { color: #1b0a03 !important; }
+  #booking-confirmation .confirmation-eyebrow { margin: 0; color: var(--accent-soft); font-size: .6rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+  #booking-confirmation h4 { margin: .18rem 0 .8rem; color: var(--on-surface) !important; font-size: 1rem; }
+  #booking-confirmation .confirmation-reference { border: 1px solid #f3a26e; border-radius: .7rem; background: #fff3eb; padding: .7rem .75rem; }
+  #booking-confirmation .confirmation-reference span { display: block; color: #80675a; font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+  #booking-confirmation .confirmation-reference strong { display: block; margin-top: .2rem; overflow-wrap: anywhere; color: #1b0a03 !important; font-size: .8rem; line-height: 1.35; }
+  #booking-confirmation .confirmation-delivery { display: flex; justify-content: space-between; gap: .8rem; margin-top: .7rem; color: var(--on-muted); font-size: .72rem; }
+  #booking-confirmation .confirmation-delivery strong { color: var(--accent-soft) !important; text-align: right; }
+  #booking-confirmation .confirmation-instructions { border: 1px solid var(--outline); border-radius: .9rem; background: var(--surface-high); padding: .85rem; }
+  #booking-confirmation .confirmation-instructions h5 { margin: 0; color: var(--on-surface); font-size: .78rem; }
+  #booking-confirmation .confirmation-instructions p { margin: .22rem 0 .65rem; color: var(--on-muted); font-size: .7rem; line-height: 1.4; }
+  #booking-confirmation .confirmation-list { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+  #booking-confirmation .confirmation-list li { display: grid; grid-template-columns: 1.3rem 1fr; gap: .5rem; align-items: start; color: var(--on-surface); font-size: .7rem; line-height: 1.35; }
+  #booking-confirmation .confirmation-list b { display: grid; place-items: center; width: 1.3rem; height: 1.3rem; border-radius: 999px; background: var(--accent); color: #1b0a03; font-size: .62rem; }
+  #booking-confirmation #booking-messenger-link { min-height: 2.85rem; display: flex; align-items: center; justify-content: center; border-radius: .8rem; }
+  #booking-confirmation .confirmation-tools { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  #booking-confirmation .confirmation-tools button { min-height: 2.55rem; border: 1px solid var(--outline); border-radius: .75rem; background: var(--surface-high); color: var(--on-surface); font-size: .65rem; font-weight: 900; }
   #booking-modal label[for="payment-terms"] {
     background: var(--surface-card) !important;
     border-color: var(--outline) !important;
@@ -1546,18 +1562,19 @@
 <aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-800" id="messenger-requirements"><strong>After saving:</strong> open Messenger and send your ₱300 proof of payment plus a clear photo of your valid government ID.</aside>
 </div>
 <section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
-<div class="rounded-xl border border-orange-200 bg-white p-4 text-zinc-900">
-<h4 class="font-black">Booking details ready</h4>
-<p class="mt-2 rounded-lg bg-orange-50 px-3 py-2 text-xs text-zinc-800">Booking reference: <strong class="text-zinc-900" id="booking-reference">—</strong></p>
-<p class="mt-1 text-xs">Your booking is saved. <strong id="confirmation-total">Delivery fee pending</strong>. Delivery is free within 3 km from Tibungco. We will check your Google Maps pin, confirm any farther-location fee, then verify your payment and valid ID.</p>
+<div class="confirmation-card">
+<p class="confirmation-eyebrow">Reservation saved</p>
+<h4>Booking details</h4>
+<div class="confirmation-reference"><span>Booking reference</span><strong id="booking-reference">—</strong></div>
+<div class="confirmation-delivery"><span>Delivery fee</span><strong id="confirmation-total">Pending confirmation</strong></div>
 </div>
-<ol class="list-decimal space-y-2 pl-5 text-xs text-zinc-700">
-<li>Open Facebook Messenger using the button below.</li>
-<li>Send your booking reference, name, selected package, rental date, Facebook profile, and Facebook name.</li>
-<li>Attach your proof of payment and a clear photo of your valid government ID.</li>
-</ol>
+<section class="confirmation-instructions">
+<h5>Send your requirements in Messenger</h5>
+<p>After opening Facebook Messenger, send these two items.</p>
+<ol class="confirmation-list"><li><b>1</b><span>Your booking reference and ₱300 reservation-fee proof of payment.</span></li><li><b>2</b><span>A clear photo of your valid government ID.</span></li></ol>
+</section>
 <a class="block w-full rounded-xl bg-brand-orange px-4 py-3 text-center text-xs font-black tracking-wider text-white" href="https://www.facebook.com/jmkaraokerental" id="booking-messenger-link" rel="noopener noreferrer" target="_blank">OPEN FACEBOOK TO SEND REQUIREMENTS</a>
-<div class="grid grid-cols-2 gap-2"><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="copy-booking-details" type="button">COPY DETAILS</button><button class="rounded-xl border border-zinc-300 px-3 py-3 text-xs font-black text-zinc-700" id="download-booking-details" type="button">DOWNLOAD</button></div>
+<div class="confirmation-tools"><button id="copy-booking-details" type="button">COPY DETAILS</button><button id="download-booking-details" type="button">DOWNLOAD</button></div>
 </section>
 </section>
 <div class="booking-step-actions mt-5">
