@@ -1,0 +1,10 @@
+# Local customer data and administrator credential hash
+data/*.json
+
+# Local configuration and logs
+.env
+.env.*
+*.log
+
+# Dependency folders
+node_modules/

@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>JM Karaoke Rental Davao | Premium JBL Sound System Rental</title>
+<!-- Tailwind CSS v3 with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5A00',
+              orangeDark: '#111111',
+              orangeLight: '#FFF3EB',
+              cream: '#FFFFFF',
+              creamDark: '#FFF3EB',
+              charcoal: '#111111',
+              stageBlue: '#111111'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            script: ['Brush Script MT', 'cursive', 'system-ui']
+          },
+          boxShadow: {
+            'glow-orange': '0 0 25px -3px rgba(255, 90, 0, 0.5)',
+            'card-soft': '0 10px 30px -5px rgba(0, 0, 0, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-typography">
+    .font-script-callout {
+      font-family: 'Snell Roundhand', 'Brush Script MT', cursive, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .text-stroke-sm {
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    }
+  </style>
+<style data-purpose="stage-lighting-effects">
+    .stage-ambient-bg {
+      background: #ffffff;
+    }
+
+    .spotlight-cone-left,
+    .spotlight-cone-right { display: none; }
+
+    .jbl-glow-pulse {
+      box-shadow: 0 0 35px rgba(255, 90, 0, 0.24);
+    }
+  </style>
+<style data-purpose="booking-design-refresh">
+    :root {
+      --surface: #ffffff;
+      --ink: #111111;
+      --muted: #5f5f5f;
+      --accent: #ff5a00;
+      --accent-dark: #111111;
+    }
+
+    body.bg-brand-cream {
+      background: #ffffff;
+    }
+
+    .stage-ambient-bg {
+      background: #ffffff;
+      background-image: none;
+    }
+
+    .spotlight-cone-left,
+    .spotlight-cone-right {
+      display: none;
+    }
+
+    [data-purpose="hero-banner"] .font-script-callout {
+      color: var(--accent);
+    }
+
+    .hero-product-preview,
+    .process-reference {
+      display: none;
+    }
+
+    [data-purpose="hero-banner"] {
+      padding: 3.25rem 0 3rem;
+      color: var(--ink);
+      border-bottom: 1px solid rgba(255, 90, 0, 0.12);
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      margin-bottom: 1rem;
+      padding: 0.38rem 0.65rem;
+      border-radius: 999px;
+      background: #fff3eb;
+      color: var(--accent);
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    [data-purpose="hero-banner"] h1 {
+      max-width: 19rem;
+      margin: 0 auto;
+      color: var(--ink) !important;
+      font-size: clamp(2.25rem, 9vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.065em;
+      line-height: 0.98;
+      text-transform: none;
+    }
+
+    [data-purpose="hero-banner"] h1 span { color: var(--accent); }
+    [data-purpose="hero-banner"] p { color: var(--muted) !important; }
+    .hero-copy { max-width: 19rem; margin: 1rem auto 1.35rem; font-size: 0.82rem; line-height: 1.65; }
+    [data-purpose="hero-banner"] > .pointer-events-none { display: none; }
+
+    .hero-benefits {
+      display: grid;
+      width: auto;
+      max-width: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin: 0 auto 1.65rem;
+    }
+
+    .hero-benefits span {
+      position: relative;
+      padding: 0 0.65rem;
+      color: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .hero-benefits span + span::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+      content: '';
+      transform: translateY(-50%);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-radius: 0.75rem;
+      background: var(--accent);
+      padding: 0.9rem 1.3rem;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 20px -14px rgba(255, 90, 0, 0.35);
+    }
+
+    .hero-note { margin: 0.75rem auto 0; font-size: 0.62rem; }
+
+    /* Core mobile-first layout */
+    [data-purpose="package-catalog"] {
+      padding-top: 3rem;
+      padding-bottom: 3.25rem;
+    }
+
+    [data-purpose="package-catalog"] > .text-left,
+    [data-purpose="booking-process"] > div > .text-left {
+      margin-bottom: 1.25rem;
+    }
+
+    [data-purpose="package-catalog"] h2,
+    [data-purpose="booking-process"] h2 {
+      font-size: 1.7rem;
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .package-overview {
+      gap: 0.8rem;
+      margin: 0 0 1.1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 1rem;
+      box-shadow: none;
+    }
+
+    .package-overview-badge {
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 0.7rem;
+      background: var(--accent);
+      box-shadow: none;
+    }
+
+    [data-purpose="package-catalog"] > .space-y-6 {
+      display: grid;
+      gap: 1rem;
+    }
+
+    article[data-purpose^="package-item"] {
+      padding: 1.2rem;
+      border: 1px solid #ececec;
+      border-top: 3px solid rgba(255, 90, 0, 0.35);
+      border-radius: 1.25rem;
+      box-shadow: 0 10px 22px -24px rgba(0, 0, 0, 0.45);
+    }
+
+    article[data-purpose="package-item-b"] {
+      border-color: rgba(255, 90, 0, 0.6);
+      border-top-color: var(--accent);
+      box-shadow: 0 16px 28px -26px rgba(255, 90, 0, 0.3);
+    }
+
+    .package-card-heading {
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-bottom: 0.9rem !important;
+    }
+
+    .package-card-heading h3 {
+      max-width: 12.5rem;
+      font-size: 1.12rem !important;
+      line-height: 1.12 !important;
+      letter-spacing: -0.035em;
+      text-transform: none !important;
+    }
+
+    .package-tier-badge {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      min-height: 1.75rem;
+      padding: 0.38rem 0.6rem;
+      border: 1px solid rgba(255, 90, 0, 0.14);
+      border-radius: 999px;
+      background: #fff3eb;
+      color: var(--accent-dark);
+      font-size: 0.56rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .package-popular-badge {
+      position: static !important;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 0 0.8rem;
+      padding: 0.4rem 0.62rem;
+      border-radius: 999px;
+      background: var(--accent) !important;
+      box-shadow: none;
+      font-size: 0.56rem;
+      line-height: 1;
+    }
+
+    .package-card-description {
+      margin: 0.28rem 0 0;
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.45;
+    }
+
+    article[data-purpose^="package-item"] .border-y {
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+    }
+
+    article[data-purpose^="package-item"] .w-5.h-5 {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+
+    article[data-purpose^="package-item"] .w-5.h-5 svg {
+      width: 0.78rem;
+      height: 0.78rem;
+    }
+
+    .package-prices {
+      gap: 0.65rem !important;
+      margin-top: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .package-prices > div {
+      min-height: 4.5rem;
+      padding: 0.65rem !important;
+      border-radius: 0.85rem !important;
+    }
+
+    article[data-purpose="package-item-a"] .package-prices > div:last-child {
+      background: #fff3eb !important;
+      border-color: #ffd0b0 !important;
+      color: var(--ink) !important;
+    }
+
+    article[data-purpose="package-item-a"] .package-prices > div:last-child span {
+      color: var(--ink) !important;
+    }
+
+    article[data-purpose^="package-item"] a[data-book-package] {
+      min-height: 2.85rem;
+      border-radius: 0.8rem;
+      box-shadow: none;
+    }
+
+    [data-purpose="booking-process"] {
+      padding-top: 3.25rem;
+      padding-bottom: 3.25rem;
+      border: 0;
+    }
+
+    [data-purpose="process-step-tracker"] {
+      display: grid;
+      gap: 0.75rem;
+      margin-left: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    [data-purpose="process-step-tracker"] > .relative.group {
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: start;
+      margin-top: 0 !important;
+    }
+
+    [data-purpose="process-step-tracker"] > .relative.group > .absolute {
+      position: static;
+      width: 2rem;
+      height: 2rem;
+      border: 0;
+      border-radius: 0.7rem;
+      box-shadow: none;
+    }
+
+    [data-purpose="process-step-tracker"] > .relative.group > div:last-child {
+      padding: 0.9rem;
+      border-color: #ededed;
+      border-radius: 0.9rem;
+      background: #ffffff;
+    }
+
+    [data-purpose="process-step-tracker"] h3 { font-size: 0.82rem; }
+    [data-purpose="process-step-tracker"] p { font-size: 0.7rem; line-height: 1.5; }
+
+    [data-purpose="sticky-mobile-cta"] {
+      padding-top: 0.45rem;
+      padding-bottom: 0.45rem;
+    }
+
+    #floating-book-btn { min-height: 3rem; }
+
+    /* Map the remaining utility accents to the cobalt palette. */
+    [class*="bg-orange-50"],
+    [class*="bg-orange-100"],
+    [class*="bg-orange-500/"] {
+      background-color: #fff3eb !important;
+    }
+
+    [class*="bg-orange-200"] { background-color: #ffe0cb !important; }
+    [class*="bg-orange-400"],
+    [class*="bg-orange-500"] { background-color: var(--accent) !important; }
+    [class*="bg-orange-500/"] { background-color: #fff3eb !important; }
+
+    [class*="border-orange-"] { border-color: #ffd0b0 !important; }
+    [class*="text-orange-"] { color: var(--accent) !important; }
+    [class*="text-orange-100"] { color: #fff3eb !important; }
+    [class*="shadow-orange-"] { box-shadow: 0 12px 20px -14px rgba(255, 90, 0, 0.28) !important; }
+
+    [data-purpose="feature-highlights"] {
+      display: none !important;
+    }
+
+    [data-purpose="package-catalog"] {
+      padding-top: 2.5rem;
+    }
+
+    .package-overview {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.5rem 0;
+      padding: 1rem 1.125rem;
+      border: 1px solid rgba(255, 90, 0, 0.18);
+      border-radius: 1.25rem;
+      background: #ffffff;
+      box-shadow: 0 14px 28px -24px rgba(17, 17, 17, 0.16);
+    }
+
+    .package-overview strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+
+    .package-overview p {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+
+    .package-overview-badge {
+      display: grid;
+      width: 2.7rem;
+      height: 2.7rem;
+      place-items: center;
+      border-radius: 0.9rem;
+      background: var(--ink);
+      color: #fff;
+      box-shadow: 0 9px 18px -10px rgba(17, 17, 17, 0.2);
+    }
+
+    article[data-purpose^="package-item"] {
+      overflow: hidden;
+      border-color: rgba(255, 90, 0, 0.2);
+      box-shadow: 0 13px 28px -25px rgba(17, 17, 17, 0.16);
+    }
+
+    article[data-purpose="package-item-a"] {
+      border-top: 4px solid #ffe0cb;
+    }
+
+    article[data-purpose="package-item-b"] {
+      border-top: 4px solid var(--accent);
+      box-shadow: 0 22px 42px -28px rgba(255, 90, 0, 0.22);
+    }
+
+    .package-prices > div {
+      min-height: 5.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .package-prices > div:last-child {
+      background: var(--accent);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    article[data-purpose^="package-item"] h3 {
+      font-size: 1rem;
+      line-height: 1.25;
+      text-transform: none;
+    }
+
+    article[data-purpose^="package-item"] .space-y-2\.5,
+    article[data-purpose^="package-item"] .grid.grid-cols-1 {
+      gap: 0.55rem;
+    }
+
+    [data-purpose="booking-process"] {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .package-prices > div:last-child span:first-child {
+      color: #ffe0cb;
+    }
+
+    .package-prices > div:last-child span:last-child {
+      color: #fff;
+    }
+
+    #booking-modal {
+      border-radius: 1.5rem;
+      background: transparent;
+    }
+
+    #booking-modal > div { background: #ffffff; }
+
+    #booking-modal input:not([type="file"]):not([type="checkbox"]),
+    #booking-modal select {
+      border-color: #dedede;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    #booking-modal input:not([type="file"]):not([type="checkbox"]):focus,
+    #booking-modal select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.13);
+    }
+
+    #price-summary {
+      border: 1px solid rgba(255, 90, 0, 0.3);
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 0 16px 30px -22px rgba(255, 90, 0, 0.2);
+    }
+
+    #price-summary #selected-package-label,
+    #price-summary #rental-price {
+      color: var(--ink);
+    }
+
+    #price-summary dl,
+    #price-summary p {
+      color: var(--muted);
+    }
+
+    #price-summary .border-t {
+      border-color: rgba(255, 90, 0, 0.22);
+      color: var(--ink);
+    }
+
+    #quick-booking-form [data-booking-step="3"] > section {
+      border-color: rgba(255, 90, 0, 0.3);
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    #booking-confirmation > div {
+      border-color: rgba(255, 90, 0, 0.4);
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    #floating-book-btn {
+      background: var(--accent);
+      box-shadow: 0 12px 20px -17px rgba(17, 17, 17, 0.18);
+    }
+
+    header a[href="#packages"] {
+      padding: 0.55rem 0.8rem;
+      white-space: nowrap;
+      font-size: 0.68rem;
+    }
+
+    a[data-book-package] {
+      min-height: 2.7rem;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.68rem;
+    }
+
+    #quick-booking-form button[type="submit"],
+    #booking-confirmation > a,
+    #booking-confirmation > button {
+      min-height: 2.7rem;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.68rem;
+    }
+
+    #floating-book-btn {
+      min-height: 3.4rem;
+      padding: 0.6rem 0.85rem;
+    }
+
+    .booking-progress {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.25rem;
+    }
+
+    .booking-progress-step {
+      display: grid;
+      min-width: 2.55rem;
+      justify-items: center;
+      gap: 0.25rem;
+      color: #767676;
+    }
+
+    .booking-progress-step > span {
+      display: grid;
+      width: 1.65rem;
+      height: 1.65rem;
+      place-items: center;
+      border: 1px solid #d2d2d2;
+      border-radius: 999px;
+      background: #fff;
+      color: #5f5f5f;
+      font-size: 0.67rem;
+      font-weight: 900;
+      transition: 180ms ease;
+    }
+
+    .booking-progress-step small {
+      font-size: 0.54rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .booking-progress-step.is-active,
+    .booking-progress-step.is-complete {
+      color: var(--accent-dark);
+    }
+
+    .booking-progress-step.is-active > span,
+    .booking-progress-step.is-complete > span {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 12px -8px rgba(17, 17, 17, 0.18);
+    }
+
+    .booking-progress-line {
+      height: 2px;
+      flex: 1 1 auto;
+      margin-top: 0.78rem;
+      border-radius: 999px;
+      background: #dedede;
+      transition: 180ms ease;
+    }
+
+    .booking-progress-line.is-complete {
+      background: var(--accent);
+    }
+
+    .booking-step-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      margin-bottom: 0.15rem;
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .booking-step-title span {
+      color: var(--accent-dark);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .booking-step-actions {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .booking-step-actions button {
+      min-height: 2.7rem;
+      border-radius: 0.8rem;
+      padding: 0.7rem 1rem;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    #booking-back-btn {
+      border: 1px solid #d2d2d2;
+      color: #4a4a4a;
+    }
+
+    .payment-terms-checkbox {
+      width: 1.2rem;
+      height: 1.2rem;
+      flex: 0 0 auto;
+      margin-top: 0.1rem;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    #booking-next-btn {
+      min-width: 7.5rem;
+      background: var(--ink);
+      color: #fff;
+    }
+
+  @media (min-width: 640px) {
+    [data-purpose="package-catalog"] {
+      max-width: 52rem;
+      }
+
+      [data-purpose="package-catalog"] > .space-y-6 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 1.25rem;
+      }
+      [data-purpose="package-catalog"] > .space-y-6 > article {
+        margin-top: 0 !important;
+      }
+      article[data-purpose^="package-item"] {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      article[data-purpose^="package-item"] .package-prices {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+      }
+    }
+  </style>
+<!-- END: Custom Styles -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="dark-reference-redesign">
+  :root {
+    --surface: #131315;
+    --surface-low: #1b1b1d;
+    --surface-card: #201f21;
+    --surface-high: #2a2a2c;
+    --on-surface: #e5e1e4;
+    --on-muted: #c8c0bd;
+    --outline: #5a4136;
+    --accent: #ff6b00;
+    --accent-soft: #ffb693;
+    --ink: #e5e1e4;
+  }
+
+  body,
+  body.bg-brand-cream {
+    background: var(--surface) !important;
+    color: var(--on-surface) !important;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, .font-black, .font-extrabold {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  [data-purpose="mobile-header"] {
+    background: rgba(19, 19, 21, 0.92) !important;
+    border-color: rgba(255, 182, 147, 0.16) !important;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.35) !important;
+  }
+
+  [data-purpose="mobile-header"] [class*="text-zinc"],
+  [data-purpose="mobile-header"] [class*="text-brand-charcoal"] { color: var(--on-surface) !important; }
+  [data-purpose="mobile-header"] [class*="bg-white"] { background: var(--surface-card) !important; }
+  [data-purpose="mobile-header"] [class*="border-orange"] { border-color: var(--outline) !important; }
+
+  [data-purpose="hero-banner"] {
+    background: var(--surface) !important;
+    border-color: rgba(255, 182, 147, 0.14) !important;
+  }
+
+  .hero-kicker { background: var(--surface-high) !important; color: var(--accent-soft) !important; }
+  [data-purpose="hero-banner"] h1 { color: var(--on-surface) !important; }
+  [data-purpose="hero-banner"] h1 span { color: var(--accent) !important; }
+  [data-purpose="hero-banner"] p { color: var(--on-muted) !important; }
+  .hero-benefits span { color: var(--on-surface) !important; }
+  .hero-benefits span + span::before { background: var(--accent) !important; }
+  .hero-cta, #floating-book-btn, [data-purpose="package-catalog"] a[data-book-package], #booking-submit-btn, #booking-messenger-link {
+    background: var(--accent) !important;
+    color: #1b0a03 !important;
+    box-shadow: 0 10px 24px -14px rgba(255, 107, 0, 0.5) !important;
+  }
+  .hero-cta svg, [data-purpose="package-catalog"] a[data-book-package] svg { color: #1b0a03; }
+
+  [data-purpose="package-catalog"],
+  [data-purpose="booking-process"],
+  [data-purpose="page-footer"] {
+    background: var(--surface) !important;
+    border-color: rgba(255, 182, 147, 0.14) !important;
+  }
+
+  [data-purpose="package-catalog"] h2,
+  [data-purpose="booking-process"] h2,
+  [data-purpose="package-catalog"] [class*="text-brand-charcoal"],
+  [data-purpose="booking-process"] [class*="text-brand-charcoal"] { color: var(--on-surface) !important; }
+  [data-purpose="package-catalog"] p,
+  [data-purpose="booking-process"] p { color: var(--on-muted) !important; }
+  [data-purpose="package-catalog"] [class*="bg-orange-100"],
+  [data-purpose="booking-process"] [class*="bg-orange-100"] { background: var(--surface-high) !important; }
+  [data-purpose="package-catalog"] [class*="text-brand-orange"],
+  [data-purpose="booking-process"] [class*="text-brand-orange"] { color: var(--accent-soft) !important; }
+
+  .package-overview,
+  article[data-purpose^="package-item"] {
+    background: var(--surface-card) !important;
+    border-color: var(--outline) !important;
+    box-shadow: 0 16px 30px -24px rgba(0, 0, 0, 0.75) !important;
+  }
+  article[data-purpose="package-item-b"] { border-color: var(--accent) !important; }
+  .package-overview-badge, .package-popular-badge { background: var(--accent) !important; color: #1b0a03 !important; }
+  .package-tier-badge { background: #321b10 !important; border-color: rgba(255, 182, 147, 0.24) !important; color: var(--accent-soft) !important; }
+  article[data-purpose^="package-item"] [class*="text-zinc-900"],
+  article[data-purpose^="package-item"] h3 { color: var(--on-surface) !important; }
+  article[data-purpose^="package-item"] [class*="text-zinc-700"],
+  article[data-purpose^="package-item"] [class*="text-zinc-500"] { color: var(--on-muted) !important; }
+  article[data-purpose^="package-item"] [class*="border-zinc"] { border-color: rgba(255, 255, 255, 0.09) !important; }
+  article[data-purpose^="package-item"] [class*="bg-zinc"] { background: var(--surface-high) !important; }
+  article[data-purpose="package-item-a"] .package-prices > div:last-child { background: #321b10 !important; border-color: rgba(255, 182, 147, 0.24) !important; }
+  article[data-purpose="package-item-a"] .package-prices > div:last-child span { color: var(--accent-soft) !important; }
+  article[data-purpose="package-item-b"] .package-prices > div:last-child { background: var(--accent) !important; }
+  article[data-purpose="package-item-b"] .package-prices > div:last-child span { color: #1b0a03 !important; }
+
+  [data-purpose="process-step-tracker"] > .relative.group > div:last-child {
+    background: var(--surface-card) !important;
+    border-color: var(--outline) !important;
+  }
+  [data-purpose="process-step-tracker"] h3 { color: var(--on-surface) !important; }
+  [data-purpose="process-step-tracker"] [class*="bg-orange-100"] { background: #321b10 !important; }
+  [data-purpose="process-step-tracker"] [class*="text-zinc"],
+  [data-purpose="process-step-tracker"] [class*="text-brand-orange"] { color: var(--on-muted) !important; }
+
+  [data-purpose="page-footer"] { border-top: 1px solid var(--outline) !important; }
+  [data-purpose="page-footer"] [class*="text-zinc-900"],
+  [data-purpose="page-footer"] [class*="text-zinc-600"] { color: var(--on-surface) !important; }
+  [data-purpose="page-footer"] [class*="text-zinc-400"] { color: var(--on-muted) !important; }
+  [data-purpose="page-footer"] [class*="border-orange"],
+  [data-purpose="page-footer"] [class*="border-white"] { border-color: var(--outline) !important; }
+  [data-purpose="page-footer"] [class*="bg-orange-50"] { background: var(--surface-high) !important; }
+
+  [data-purpose="sticky-mobile-cta"] {
+    background: rgba(27, 27, 29, 0.96) !important;
+    border-color: var(--outline) !important;
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35) !important;
+  }
+  #floating-book-btn [class*="text-orange-100"] { color: #ffd8c5 !important; }
+  #floating-book-btn [class*="bg-white"] { background: rgba(19, 19, 21, 0.22) !important; }
+
+  #booking-modal { background: var(--surface) !important; border: 1px solid var(--outline) !important; }
+  #booking-modal::backdrop { background: rgba(0, 0, 0, 0.72); }
+  #booking-modal > div { background: var(--surface) !important; color: var(--on-surface); }
+  #booking-modal [class*="text-zinc-900"], #booking-modal h3, #booking-modal h4 { color: var(--on-surface) !important; }
+  #booking-modal [class*="text-zinc-700"], #booking-modal [class*="text-zinc-500"] { color: var(--on-muted) !important; }
+  #booking-modal [class*="border-zinc"], #booking-modal [class*="border-orange"] { border-color: var(--outline) !important; }
+  #booking-modal input:not([type="checkbox"]), #booking-modal select {
+    background: var(--surface-card) !important;
+    color: var(--on-surface) !important;
+    border-color: var(--outline) !important;
+  }
+  #price-summary, #quick-booking-form [data-booking-step="3"] > section, #booking-confirmation > div {
+    background: var(--surface-card) !important;
+    color: var(--on-surface) !important;
+    border-color: var(--outline) !important;
+  }
+  #price-summary *, #booking-confirmation * { color: var(--on-surface) !important; }
+  #price-summary #rental-price, #price-summary #booking-total, #price-summary strong { color: var(--accent-soft) !important; }
+  #booking-modal label[for="payment-terms"] {
+    background: var(--surface-card) !important;
+    border-color: var(--outline) !important;
+    color: var(--on-surface) !important;
+  }
+  #booking-modal label[for="payment-terms"] span { color: var(--on-surface) !important; }
+  #booking-modal #payment-terms { accent-color: var(--accent) !important; }
+  #quick-booking-form [data-booking-step="4"] > section {
+    background: var(--surface-card) !important;
+    border-color: var(--outline) !important;
+    color: var(--on-surface) !important;
+  }
+  #quick-booking-form [data-booking-step="4"] > section * { color: var(--on-surface) !important; }
+  #customer-delivery-guide {
+    background: #fff3eb !important;
+    border-color: #f3a26e !important;
+    color: #4a3023 !important;
+  }
+  #customer-delivery-guide p { color: #4a3023 !important; }
+  #customer-delivery-guide p:first-child,
+  #customer-delivery-guide strong { color: #a54208 !important; }
+  #quick-booking-form [data-booking-step="5"] > div,
+  #quick-booking-form [data-booking-step="5"] > p {
+    background: var(--surface-card) !important;
+    border-color: var(--outline) !important;
+    color: var(--on-surface) !important;
+  }
+  #quick-booking-form [data-booking-step="5"] > div *,
+  #quick-booking-form [data-booking-step="5"] > p { color: var(--on-surface) !important; }
+  #quick-booking-form [data-booking-step="5"] > section {
+    background: var(--surface-high) !important;
+    border-color: var(--outline) !important;
+    color: var(--on-surface) !important;
+  }
+  #quick-booking-form [data-booking-step="5"] > section p { color: var(--on-surface) !important; }
+  #quick-booking-form [data-booking-step="5"] .gcash-qr-placeholder {
+    background: #fff !important;
+    color: #1b0a03 !important;
+  }
+  .payment-qr-image {
+    display: block;
+    width: 100%;
+    max-width: 17rem;
+    margin: 0 auto;
+    border-radius: .75rem;
+    background: #fff;
+  }
+  .payment-method-option {
+    min-height: 4.7rem;
+    cursor: pointer;
+    border: 1px solid var(--outline) !important;
+    background: var(--surface-card) !important;
+    color: var(--on-surface) !important;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+  .payment-method-option:hover { border-color: var(--accent-soft) !important; }
+  .payment-method-option.is-selected {
+    border-color: var(--accent) !important;
+    background: #321b10 !important;
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .payment-method-option.is-selected span { color: var(--accent-soft) !important; }
+  #quick-booking-form [data-booking-step="5"] #review-total { color: var(--accent-soft) !important; }
+  #quick-booking-form [data-booking-step="5"] .border-zinc-100 { border-color: var(--outline) !important; }
+  .gcash-copy-button { background: var(--accent) !important; color: #1b0a03 !important; }
+  .gcash-copy-button:disabled { cursor: not-allowed; opacity: .5; }
+  #booking-next-btn, #booking-submit-btn { background: var(--accent) !important; color: #1b0a03 !important; }
+  #booking-back-btn { background: var(--surface-high) !important; border-color: var(--outline) !important; color: var(--on-surface) !important; }
+  .booking-step-actions { align-items: center; }
+  .booking-step-actions button {
+    min-height: 2.5rem;
+    padding: .55rem .8rem;
+    font-size: .62rem;
+    line-height: 1;
+  }
+  #booking-back-btn { min-width: 4.15rem; }
+  #booking-submit-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: .42rem;
+    min-width: 0;
+    white-space: nowrap;
+  }
+  #booking-submit-btn svg { order: -1; width: .85rem; height: .85rem; flex: 0 0 auto; }
+
+  .duration-option {
+    display: flex;
+    min-height: 5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font: inherit;
+    background: var(--surface-high) !important;
+    border: 1px solid var(--outline) !important;
+    color: var(--on-surface) !important;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+  .duration-option span { color: var(--on-surface) !important; }
+  .duration-option:hover { border-color: var(--accent-soft) !important; }
+  .duration-option.is-selected {
+    background: #321b10 !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 1px var(--accent), 0 10px 18px -14px rgba(255, 107, 0, 0.55);
+  }
+  .duration-option.is-selected span:first-child { color: var(--accent-soft) !important; }
+  .duration-option.is-selected span:last-child { color: var(--accent-soft) !important; }
+  [data-purpose="mobile-header"] a[aria-label^="Call"] {
+    background: #321b10 !important;
+    color: var(--accent) !important;
+  }
+  [data-purpose="mobile-header"] a[aria-label^="Call"] svg {
+    color: var(--accent-soft) !important;
+  }
+  [data-purpose="mobile-header"] #menu-button {
+    background: #321b10 !important;
+    border: 1px solid rgba(255, 182, 147, .38) !important;
+    color: var(--accent-soft) !important;
+  }
+  [data-purpose="mobile-header"] #menu-button svg { color: var(--accent-soft) !important; }
+  .footer-call-link {
+    background: #321b10 !important;
+    border: 1px solid var(--outline) !important;
+    color: var(--accent-soft) !important;
+  }
+  .footer-call-link svg { color: var(--accent) !important; }
+
+  /* Responsive app layout: comfortable on small phones and spacious on larger screens. */
+  html { -webkit-text-size-adjust: 100%; }
+  body { overflow-x: hidden; }
+  img, svg { max-width: 100%; }
+  button, a, input, select { -webkit-tap-highlight-color: transparent; }
+
+  @media (max-width: 390px) {
+    [data-purpose="mobile-header"] > div { padding-inline: .75rem; }
+    [data-purpose="mobile-header"] .font-black { font-size: .66rem; }
+    [data-purpose="mobile-header"] a[href="#packages"] { padding-inline: .65rem; }
+    .hero-benefits { grid-template-columns: 1fr; gap: .45rem; }
+    .hero-benefits span { padding: 0; white-space: normal; }
+    .hero-benefits span + span::before { display: none; }
+    #booking-modal { width: 100%; max-width: none; max-height: 92dvh; margin: auto 0 0; border-radius: 1.25rem 1.25rem 0 0; }
+    #booking-modal > div { padding: 1rem; }
+    .booking-progress-step { min-width: 2rem; }
+    .booking-progress-step small { font-size: .48rem; }
+    .booking-progress-line { margin-inline: -.1rem; }
+    .booking-step-actions { gap: .45rem; }
+    .booking-step-actions button { min-width: 0; padding-inline: .75rem; }
+  }
+
+  @media (min-width: 640px) {
+    [data-purpose="mobile-header"] > div { max-width: 68rem; }
+    [data-purpose="hero-banner"] > div { max-width: 46rem; }
+    [data-purpose="package-catalog"], [data-purpose="booking-process"] > div { max-width: 52rem; }
+    #booking-modal { width: min(92vw, 34rem); }
+  }
+
+  @media (min-width: 768px) {
+    [data-purpose="hero-banner"] { padding-block: 4.75rem; }
+    [data-purpose="hero-banner"] h1 { max-width: 34rem; font-size: clamp(3rem, 6vw, 4.5rem); }
+    .hero-copy { max-width: 30rem; font-size: .95rem; }
+    [data-purpose="sticky-mobile-cta"] { display: none; }
+    body { padding-bottom: 0 !important; }
+  }
+
+  @media (min-width: 1024px) {
+    [data-purpose="mobile-header"] > div {
+      max-width: 72rem !important;
+      padding-inline: 2rem;
+    }
+    [data-purpose="hero-banner"] { padding-block: 5.5rem; }
+    [data-purpose="hero-banner"] > .relative.z-10 {
+      width: 100%;
+      max-width: 72rem !important;
+      min-height: 22rem;
+      padding-inline: 2rem !important;
+      padding-right: 33rem !important;
+      align-items: flex-start !important;
+      justify-content: center;
+      text-align: left !important;
+    }
+    [data-purpose="hero-banner"] h1 { margin-inline: 0; max-width: 31rem; }
+    .hero-copy, .hero-note { margin-inline: 0; }
+    .hero-benefits { margin-inline: 0; }
+    .hero-product-preview {
+      display: block !important;
+      position: absolute !important;
+      top: 50%;
+      right: 2rem;
+      width: min(26rem, 35vw) !important;
+      max-width: none !important;
+      margin: 0 !important;
+      transform: translateY(-50%);
+    }
+    [data-purpose="package-catalog"], [data-purpose="booking-process"] > div {
+      max-width: 72rem !important;
+      padding-inline: 2rem;
+    }
+    [data-purpose="package-catalog"] > .space-y-6 { gap: 1.5rem; }
+    [data-purpose="page-footer"] > .max-w-lg { max-width: 72rem !important; }
+  }
+</style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal antialiased selection:bg-brand-orange selection:text-white pb-24">
+<!-- BEGIN: Mobile Top App Bar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-orange-100 shadow-sm transition-all" data-purpose="mobile-header">
+<div class="px-4 py-2.5 flex items-center justify-between max-w-lg mx-auto">
+<!-- Brand Logo -->
+<a aria-label="JM Karaoke Rental Davao Home" class="flex items-center gap-2 group" href="#">
+<!-- Logo Mark -->
+<img alt="JM Karaoke Rental Davao logo" class="w-9 h-9 rounded-full object-cover shadow-sm" src="https://scontent.fdvo1-2.fna.fbcdn.net/v/t39.30808-6/790113779_122094393099472482_725964795810205353_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1040x1062&amp;ctp=s1040x1062&amp;_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=6ee11a&amp;_nc_eui2=AeF8gv7IzDFfreRCVGL7NirZ8WpPAq9XKdLxak8Cr1cp0lGnIsyVDOmyEcuW4rkRaxcKZP_Ri50F0JCxCn8W5Ha_&amp;_nc_ohc=9ZIJDSQZOKwQ7kNvwEjuh4T&amp;_nc_oc=AdpmJFEG66CotiH1tgQsFehf9VsfSIfGed0_a66hFPhT-qFeKM-3O6GBYqrhDqTQ_I8q0H_o9sP3GAwgOTTL-pIQ&amp;_nc_zt=23&amp;_nc_ht=scontent.fdvo1-2.fna&amp;_nc_gid=80CiMfdR7DqiamG3OjNuSg&amp;_nc_ss=7b2a8&amp;oh=00_AQJonWMINu1F_v5Z7As-9RiqJYkajgdNl34mTzkQZMKoRQ&amp;oe=6AAEF57E"/>
+<div class="flex flex-col leading-tight">
+<span class="text-[12px] font-black tracking-wider uppercase text-brand-charcoal">Karaoke</span>
+<span class="text-[11px] font-extrabold tracking-widest uppercase text-brand-orange">Rental Davao</span>
+</div>
+</a>
+<!-- Quick Action Right Group -->
+<div class="flex items-center gap-2">
+<a class="bg-brand-orange hover:bg-brand-orangeDark active:scale-95 text-white font-bold text-xs uppercase tracking-wide px-3.5 py-2 rounded-full shadow-sm shadow-orange-500/30 transition flex items-center gap-1" href="#packages">
+          Book Now
+        </a>
+<!-- Mobile Drawer Menu Trigger Button -->
+<button aria-label="Toggle navigation menu" class="p-2 rounded-lg text-zinc-700 active:bg-orange-100/50" id="menu-button" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Mobile Dropdown Navigation Drawer -->
+<nav aria-label="Mobile Navigation" class="hidden border-t border-orange-100 bg-white/95 px-5 py-4 space-y-3 shadow-lg" id="mobile-nav-panel">
+<a class="block text-sm font-bold text-zinc-800 hover:text-brand-orange py-1" href="#hero">Home</a>
+<a class="block text-sm font-bold text-zinc-800 hover:text-brand-orange py-1" href="#packages">Packages</a>
+<a class="block text-sm font-bold text-zinc-800 hover:text-brand-orange py-1" href="#how-to-book">How To Book</a>
+<a class="block text-sm font-bold text-zinc-800 hover:text-brand-orange py-1" href="#contact">Contact Us</a>
+<div class="pt-2 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
+<span>Delivery within Davao City</span>
+<span class="text-brand-orange font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span> Open Today
+        </span>
+</div>
+</nav>
+</header>
+<!-- END: Mobile Top App Bar -->
+<!-- BEGIN: Hero Section -->
+<section class="relative stage-ambient-bg text-white overflow-hidden pt-6 pb-10" data-purpose="hero-banner" id="hero">
+<!-- Stage Lighting Simulation Overlays -->
+<div class="pointer-events-none absolute inset-0 z-0 opacity-60">
+<div class="spotlight-cone-left absolute -top-10 left-[-10%] w-[65%] h-[90%] rotate-[15deg]"></div>
+<div class="spotlight-cone-right absolute -top-10 right-[-10%] w-[65%] h-[90%] -rotate-[15deg]"></div>
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-brand-stageBlue via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-lg mx-auto px-4 flex flex-col items-center text-center">
+<span class="hero-kicker">Davao City karaoke rental</span>
+<h1>Bring the party <span>home.</span></h1>
+<p class="hero-copy">Premium JBL sound, complete setup, and ad-free karaoke for your celebration.</p>
+<!-- Visual Spotlight: System Preview Image from Snapshot -->
+<div class="hero-product-preview relative w-full max-w-xs mb-6 rounded-2xl overflow-hidden shadow-2xl border border-orange-100 group bg-white p-2">
+<img alt="JM Karaoke Rental Partybox Setup with TV, Microphone and Disco Lights" class="w-full h-auto object-cover rounded-xl" loading="eager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwO0PQskNJmuMl-ONBzui7HJSRpC5GSqLrA_6-fjHisYhj9CLkhvYwJJ22eCP4naVeX7sHZLLFaxwuyvei-u25gDWH2-5YBBl1Vo_EOGJz4EQ3eEeErEGQUgfEs7MHBayFZX1VnFrx6ZO-EOKyd0S7sIuByETu_ryTp4lpAOuENwCnRNHG8HxuDrV3lY7bsxDZ8j3RssazeFGENvvRXjhkUbcllWpY2vXs-e2tMcr-gzUvNgwDh5y8C4xIby1jrDy2xQ"/>
+<div class="absolute bottom-3 left-4 right-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full border border-orange-100 flex items-center justify-between text-[11px] text-zinc-700">
+<span class="flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
+            High-Definition Bass Setup
+          </span>
+<span class="text-brand-orange font-bold">Party Ready</span>
+</div>
+</div>
+<!-- Feature Highlight Badges (2x2 Grid) -->
+<div class="w-full grid grid-cols-2 gap-2.5 mb-6 text-left" data-purpose="feature-highlights">
+<!-- Feature 1: Sound -->
+<div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full border border-brand-orange/80 bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-brand-orange">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="text-[11px] font-bold text-white uppercase leading-tight">High Quality</div>
+<div class="text-[10px] text-zinc-400 leading-tight">Pro JBL Sound</div>
+</div>
+</div>
+<!-- Feature 2: Free Delivery -->
+<div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full border border-brand-orange/80 bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-brand-orange">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="text-[11px] font-bold text-white uppercase leading-tight">Free Delivery</div>
+<div class="text-[10px] text-zinc-400 leading-tight">Within 3KM Davao</div>
+</div>
+</div>
+<!-- Feature 3: Flexible Hours -->
+<div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full border border-brand-orange/80 bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-brand-orange">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="text-[11px] font-bold text-white uppercase leading-tight">12 &amp; 22 Hours</div>
+<div class="text-[10px] text-zinc-400 leading-tight">Rental Duration</div>
+</div>
+</div>
+<!-- Feature 4: Youtube Premium -->
+<div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-2.5 flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full border border-brand-orange/80 bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-brand-orange">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+</svg>
+</div>
+<div>
+<div class="text-[11px] font-bold text-white uppercase leading-tight">Youtube Ad-Free</div>
+<div class="text-[10px] text-zinc-400 leading-tight">Premium Included</div>
+</div>
+</div>
+</div>
+<div class="hero-benefits" aria-label="Rental benefits">
+<span>JBL sound</span>
+<span>Setup &amp; delivery</span>
+<span>Ad-free songs</span>
+</div>
+<!-- Action Button -->
+<a class="hero-cta hover:bg-brand-orangeDark active:scale-95 transition" href="#packages">
+<span>Reserve your date</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<p class="hero-note">See the exact price after selecting a set.</p>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Packages Section -->
+<section class="pt-10 pb-12 px-4 max-w-lg mx-auto" data-purpose="package-catalog" id="packages">
+<!-- Section Header -->
+<div class="text-left mb-6">
+<span class="text-xs font-black uppercase tracking-wider text-brand-orange bg-orange-100/80 px-2.5 py-1 rounded-md">
+        OUR PACKAGES
+      </span>
+<h2 class="text-2xl sm:text-3xl font-black text-brand-charcoal mt-2 tracking-tight">
+        Choose your set
+      </h2>
+<p class="text-xs sm:text-sm text-zinc-600 mt-1">
+        Choose the setup that fits your celebration.
+      </p>
+</div>
+<!-- Package Guide -->
+<div class="package-overview">
+<div>
+<strong>Clear price. No surprises.</strong>
+<p>See the rental, delivery fee, and refundable deposit before you book.</p>
+</div>
+<div aria-hidden="true" class="package-overview-badge">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24"><path d="M12 6v6l4 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+<!-- Interactive Mobile Package Cards List -->
+<div class="space-y-6" id="package-cards">
+<!-- PACKAGE: SET A -->
+<article class="bg-white rounded-2xl p-5 border border-orange-200/80 shadow-card-soft transition-all hover:border-brand-orange/50" data-purpose="package-item-a">
+<!-- Top Badge & Header -->
+<div class="package-card-heading flex items-start justify-between mb-3">
+<div>
+<span class="text-xs font-black tracking-widest text-brand-orange uppercase">SET A</span>
+<h3 class="text-lg font-black text-brand-charcoal uppercase leading-snug">JBL 520 Karaoke Set</h3>
+<p class="package-card-description">A clean JBL setup for simple celebrations.</p>
+</div>
+<span class="package-tier-badge">Standard set</span>
+</div>
+<!-- Package Features Included -->
+<div class="space-y-2.5 py-3 border-y border-zinc-100 text-xs text-zinc-700">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-semibold text-zinc-900">JBL PartyBox 520 (High-Bass Speaker)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-semibold text-zinc-900">JBL Wireless Microphones (2pcs)</span>
+</div>
+</div>
+<!-- Price Breakdown Badges (12 hrs vs 22 hrs) -->
+<div class="package-prices grid grid-cols-2 gap-2 mt-4 mb-4" style="margin-top:1rem !important">
+<button aria-pressed="false" class="duration-option bg-zinc-100/90 rounded-xl p-2.5 text-center border border-zinc-200" data-duration="12" data-duration-choice="set-a" type="button">
+<span class="block text-[10px] font-medium text-zinc-500 uppercase">12 hours</span>
+<span class="text-lg font-black text-brand-charcoal">₱599</span>
+</button>
+<button aria-pressed="false" class="duration-option bg-orange-50/80 rounded-xl p-2.5 text-center border border-orange-200" data-duration="22" data-duration-choice="set-a" type="button">
+<span class="block text-[10px] font-medium text-brand-orange uppercase">22 hours</span>
+<span class="text-lg font-black text-brand-orangeDark">₱799</span>
+</button>
+</div>
+<!-- CTA for SET A -->
+<a class="w-full py-3 px-4 bg-brand-orange hover:bg-brand-orangeDark active:scale-95 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-orange-500/25 flex items-center justify-center gap-1.5 transition" data-book-package="set-a" href="#booking">
+<span>BOOK SET A</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</article>
+<!-- PACKAGE: SET B (POPULAR) -->
+<article class="relative bg-white rounded-2xl p-5 border-2 border-brand-orange shadow-lg shadow-orange-500/10" data-purpose="package-item-b">
+<!-- Most Popular Callout Pill -->
+<div class="package-popular-badge absolute -top-3 right-5 bg-brand-orange text-white font-extrabold text-[10px] tracking-wider uppercase px-3 py-1 rounded-full shadow">
+          ★ MOST POPULAR
+        </div>
+<!-- Top Header -->
+<div class="package-card-heading flex items-start justify-between mb-3">
+<div>
+<span class="text-xs font-black tracking-widest text-brand-orange uppercase">SET B</span>
+<h3 class="text-lg font-black text-brand-charcoal uppercase leading-snug">Complete Karaoke Set</h3>
+<p class="package-card-description">The full party setup with TV, karaoke system, and lights.</p>
+</div>
+</div>
+<!-- Package Features Included -->
+<div class="grid grid-cols-1 gap-2.5 py-3 border-y border-zinc-100 text-xs text-zinc-700">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">JBL PartyBox 520</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">JBL Wireless Microphones (2pcs)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">SMART TV 32INCH. w/ TV STAND</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">PLATINUM KARAOKE XL SD w/ SONGBOOK</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">Disco Light</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-bold text-zinc-900">YouTube Premium</span>
+</div>
+</div>
+<!-- Price Breakdown Badges (Set B) -->
+<div class="package-prices grid grid-cols-2 gap-2 mt-4 mb-4">
+<button aria-pressed="false" class="duration-option bg-zinc-100/90 rounded-xl p-2.5 text-center border border-zinc-200" data-duration="12" data-duration-choice="set-b" type="button">
+<span class="block text-[10px] font-medium text-zinc-500 uppercase">12 hours</span>
+<span class="text-xl font-black text-brand-charcoal">₱899</span>
+</button>
+<button aria-pressed="false" class="duration-option bg-orange-500 rounded-xl p-2.5 text-center text-white shadow-sm shadow-orange-500/40" data-duration="22" data-duration-choice="set-b" type="button">
+<span class="block text-[10px] font-bold text-orange-100 uppercase">22 hours Best Value</span>
+<span class="text-xl font-black">₱1,199</span>
+</button>
+</div>
+<!-- CTA for SET B -->
+<a class="w-full py-3.5 px-4 bg-brand-orange hover:bg-brand-orangeDark active:scale-95 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-orange-500/30 flex items-center justify-center gap-1.5 transition" data-book-package="set-b" href="#booking">
+<span>BOOK SET B</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</article>
+</div>
+</section>
+<!-- END: Packages Section -->
+<!-- BEGIN: How To Book Section -->
+<section class="py-10 bg-white border-y border-orange-100/80 px-4" data-purpose="booking-process" id="how-to-book">
+<div class="max-w-lg mx-auto">
+<!-- Section Title matching Screenshot 1 -->
+<div class="mb-8 text-left">
+<span class="text-xs font-black uppercase tracking-wider text-brand-orange bg-orange-100 px-2.5 py-1 rounded-md">
+          HOW TO BOOK
+        </span>
+<h2 class="text-2xl sm:text-3xl font-black text-brand-charcoal mt-2 tracking-tight">
+          Simple Steps to Your Karaoke Experience
+        </h2>
+<p class="text-xs sm:text-sm text-zinc-500 mt-1">
+          Five quick steps from package choice to confirmation.
+        </p>
+</div>
+<!-- Process Visual Reference from Snapshot -->
+<div class="process-reference mb-8 rounded-xl overflow-hidden border border-zinc-200/80 shadow-xs">
+<img alt="How to book process flow overview" class="w-full h-auto object-cover" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgOESnwhaXylH9glmy8lwKnRAGQ-zEMCINB591wTvqznalP8fvrMKvyis02nV23ASLiAOdDaaWXjx4x0XpEmN-v2sLOrNNh-Z-tb87x61hKFc1_Js5h4UMepsIAOrDPk9S9pvxo6jx_STUNdHmPdDF6pMc-s7CXgrxq-C88YQq5ejUlt3TKewEu8Z_njksPhVQXcpCufwPHzRAthouwGkLoY37xKqxqzu_KFIPhUHafi7acOvA3H2aYpPCcBAVA3fETA"/>
+</div>
+<!-- Progressive 5 Steps Mobile Layout -->
+<div class="relative pl-6 border-l-2 border-orange-200 space-y-7 ml-2" data-purpose="process-step-tracker">
+<!-- Step 1 -->
+<div class="relative group">
+<div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full border-2 border-white bg-brand-orange text-white text-xs font-black flex items-center justify-center shadow">
+            1
+          </div>
+<div class="bg-brand-cream/60 p-3.5 rounded-xl border border-orange-100">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full border border-orange-400 bg-orange-100 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h3 class="text-sm font-black text-zinc-900">Choose Package</h3>
+</div>
+<p class="text-xs text-zinc-600 pl-8">
+              Select Set A or Set B and your desired rental duration (12 or 22 hours).
+            </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative group">
+<div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full border-2 border-white bg-brand-orange text-white text-xs font-black flex items-center justify-center shadow">
+            2
+          </div>
+<div class="bg-brand-cream/60 p-3.5 rounded-xl border border-orange-100">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full border border-orange-400 bg-orange-100 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h3 class="text-sm font-black text-zinc-900">Set Schedule</h3>
+</div>
+<p class="text-xs text-zinc-600 pl-8">
+              Pick your event date and requested delivery time anywhere in Davao.
+            </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative group">
+<div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full border-2 border-white bg-brand-orange text-white text-xs font-black flex items-center justify-center shadow">
+            3
+          </div>
+<div class="bg-brand-cream/60 p-3.5 rounded-xl border border-orange-100">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full border border-orange-400 bg-orange-100 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h3 class="text-sm font-black text-zinc-900">Fill in Details</h3>
+</div>
+<p class="text-xs text-zinc-600 pl-8">
+              Provide your personal, contact &amp; venue location information.
+            </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative group">
+<div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full border-2 border-white bg-brand-orange text-white text-xs font-black flex items-center justify-center shadow">
+            4
+          </div>
+<div class="bg-brand-cream/60 p-3.5 rounded-xl border border-orange-100">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full border border-orange-400 bg-orange-100 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h3 class="text-sm font-black text-zinc-900">Make Payment</h3>
+</div>
+<p class="text-xs text-zinc-600 pl-8">
+              Pay the reservation fee via GCash or Bank Transfer to lock your date.
+            </p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative group">
+<div class="absolute -left-[35px] top-0 w-8 h-8 rounded-full border-2 border-white bg-brand-orange text-white text-xs font-black flex items-center justify-center shadow">
+            5
+          </div>
+<div class="bg-white p-3.5 rounded-xl border border-orange-200">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full border border-orange-400 bg-orange-100 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<h3 class="text-sm font-black text-zinc-900">Confirmation</h3>
+</div>
+<p class="text-xs text-zinc-600 pl-8">
+              We'll confirm your slot immediately and you're ready to sing your heart out!
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: How To Book Section -->
+<!-- BEGIN: Interactive Booking Modal / Drawer Sheet -->
+<dialog class="fixed inset-0 m-auto z-50 p-0 max-w-lg w-[92%] max-h-[90vh] rounded-2xl backdrop:bg-white/80 shadow-2xl border-0 overflow-y-auto" data-purpose="booking-dialog" id="booking-modal">
+<div class="bg-white p-5" id="booking">
+<div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
+<div>
+<h3 class="font-black text-lg text-zinc-900">Reserve Karaoke Set</h3>
+<p class="text-xs text-zinc-500">Fast confirmation via Facebook Messenger</p>
+</div>
+<button class="p-1 rounded-lg text-zinc-400 hover:text-zinc-700" id="close-modal-btn">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<nav aria-label="Booking progress" class="booking-progress mb-5">
+<div class="booking-progress-step is-active" data-step-indicator="1"><span>1</span><small>Package</small></div>
+<div class="booking-progress-line"></div>
+<div class="booking-progress-step" data-step-indicator="2"><span>2</span><small>Details</small></div>
+<div class="booking-progress-line"></div>
+<div class="booking-progress-step" data-step-indicator="3"><span>3</span><small>Payment</small></div>
+<div class="booking-progress-line"></div>
+<div class="booking-progress-step" data-step-indicator="4"><span>4</span><small>Messenger</small></div>
+<div class="booking-progress-line"></div>
+<div class="booking-progress-step" data-step-indicator="5"><span>5</span><small>GCash</small></div>
+</nav>
+<form class="text-xs" id="quick-booking-form">
+<section class="booking-step space-y-3.5" data-booking-step="1">
+<p class="booking-step-title"><span>Step 1 of 5</span>Choose your karaoke package</p>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="form-package-choice">Select Package</label>
+<select class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="form-package-choice">
+<option value="set-b">SET B: Complete Karaoke Set</option>
+<option value="set-a">SET A: JBL 520 Karaoke Set</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="form-duration-choice">Duration</label>
+<select class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="form-duration-choice" required="">
+<option disabled="" selected="" value="">Choose duration</option>
+<option value="12">12 Hours</option>
+<option value="22">22 Hours (Best Deal)</option>
+</select>
+</div>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="booking-date">Target Date</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="booking-date" required="" type="date"/>
+<p aria-live="polite" class="mt-1 text-[10px] font-semibold text-zinc-500" id="availability-note">Choose a package and date to check availability.</p>
+</div>
+</div>
+<section aria-live="polite" class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-zinc-800" id="price-summary">
+<div class="flex items-center justify-between gap-3">
+<span class="font-black text-brand-orange" id="selected-package-label">SET B · 22 Hours</span>
+<span class="font-black text-lg" id="rental-price">₱1,199</span>
+</div>
+<dl class="mt-2 space-y-1 text-[11px]">
+<div class="flex justify-between"><dt>Rental fee</dt><dd id="rental-fee">₱1,199</dd></div>
+<div class="flex justify-between"><dt>Reservation fee today</dt><dd>₱300</dd></div>
+<div class="flex justify-between"><dt>Delivery fee</dt><dd>Free within 3 km</dd></div>
+<div class="flex justify-between"><dt>Refundable security deposit</dt><dd>₱1,000</dd></div>
+<div class="mt-2 flex justify-between border-t border-orange-200 pt-2 font-black text-brand-charcoal"><dt>Subtotal before delivery</dt><dd id="booking-total">₱2,199</dd></div>
+</dl>
+<p class="mt-2 text-[10px] text-zinc-600">Delivery is free within 3 km from Tibungco. Send your Google Maps pin below so we can confirm the fee for farther locations in Messenger.</p>
+</section>
+</section>
+<section class="booking-step hidden space-y-3.5" data-booking-step="2" hidden>
+<p class="booking-step-title"><span>Step 2 of 5</span>Your contact and delivery details</p>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="customer-name">Your Full Name</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="customer-name" placeholder="e.g. Maria Santos" required="" type="text"/>
+</div>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="delivery-address">Delivery Address (Davao City)</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="delivery-address" placeholder="Barangay, Street, Landmark" required="" type="text"/>
+</div>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="maps-link">Google Maps Location Link</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="maps-link" placeholder="Paste your shared Google Maps location link" required="" type="url"/>
+<p class="mt-1 text-[10px] text-zinc-500">Open Google Maps → Share → Copy link, then paste it here.</p>
+</div>
+<aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-700" id="customer-delivery-guide">
+<p class="font-black text-zinc-900">Delivery guide</p>
+<p class="mt-1">Delivery is free within <strong>3 km from Tibungco</strong>. For locations farther away, we check your Google Maps pin and confirm the delivery fee through Messenger before your booking is finalized.</p>
+</aside>
+<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="facebook-profile">Existing Facebook Profile</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="facebook-profile" placeholder="facebook.com/yourprofile" required="" type="text"/>
+</div>
+<div>
+<label class="block font-bold text-zinc-700 mb-1" for="customer-email">Email Address</label>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="customer-email" placeholder="you@email.com" required="" type="email"/>
+</div>
+</div>
+</section>
+<section class="booking-step hidden space-y-3.5" data-booking-step="3" hidden>
+<p class="booking-step-title"><span>Step 3 of 5</span>Review payment terms</p>
+<section class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] text-zinc-900">
+<h4 class="font-black">Payment &amp; identity requirements</h4>
+<ul class="mt-1 list-disc space-y-1 pl-4">
+<li><strong>Send a ₱300 reservation fee</strong> through GCash or MariBank to reserve your selected date.</li>
+<li>Delivery is free within 3 km from Tibungco. For farther locations, we confirm the fee after checking your Google Maps location link.</li>
+<li>Security deposit: <strong>₱1,000</strong>, refundable after inspection if there is no damage or missing item.</li>
+</ul>
+</section>
+<label class="flex cursor-pointer items-start gap-3 rounded-xl border border-zinc-200 bg-white p-3 text-[11px] text-zinc-700" for="payment-terms">
+<input class="payment-terms-checkbox" id="payment-terms" required="" type="checkbox"/>
+<span>I understand that I need to send the ₱300 reservation fee to reserve my date, that delivery for farther locations is confirmed from my map pin, and that the ₱1,000 security deposit is refundable after inspection when the equipment is complete and undamaged.</span>
+</label>
+</section>
+<section class="booking-step hidden space-y-3.5" data-booking-step="4" hidden>
+<p class="booking-step-title"><span>Step 4 of 5</span>Send your requirements after booking</p>
+<section class="rounded-xl border border-orange-200 bg-orange-50 p-4 text-[11px] leading-relaxed text-zinc-900">
+<h4 class="font-black">After your booking is submitted</h4>
+<p class="mt-1">Pay the <strong>₱300 reservation fee</strong> using the selected payment method, then open Facebook Messenger and send the booking team:</p>
+<ul class="mt-2 list-disc space-y-1 pl-4">
+<li>Your proof of payment</li>
+<li>A clear photo of your Driver's License or another valid government-issued ID</li>
+</ul>
+</section>
+</section>
+<section class="booking-step hidden space-y-3.5" data-booking-step="5" hidden>
+<p class="booking-step-title"><span>Step 5 of 5</span>Choose your payment method</p>
+<div class="rounded-xl border border-zinc-200 bg-white p-4 text-xs text-zinc-700">
+<div class="flex items-center justify-between gap-3 border-b border-zinc-100 pb-3"><span class="font-bold">Reservation fee today</span><strong id="review-total" class="text-base text-brand-orange">₱300</strong></div>
+<dl class="mt-3 space-y-2">
+<div class="flex justify-between gap-4"><dt>Package</dt><dd class="text-right font-semibold" id="review-package"></dd></div>
+<div class="flex justify-between gap-4"><dt>Date</dt><dd class="text-right font-semibold" id="review-date"></dd></div>
+<div class="flex justify-between gap-4"><dt>Customer</dt><dd class="text-right font-semibold" id="review-customer"></dd></div>
+</dl>
+</div>
+<div class="grid grid-cols-2 gap-3" role="group" aria-label="Payment method">
+<button aria-pressed="true" class="payment-method-option is-selected rounded-xl px-3 py-3 text-left text-xs font-black" data-payment-method="gcash" type="button"><span class="block">GCash</span><small class="mt-1 block text-[10px] font-medium">Scan QR or copy number</small></button>
+<button aria-pressed="false" class="payment-method-option rounded-xl px-3 py-3 text-left text-xs font-black" data-payment-method="maribank" type="button"><span class="block">MariBank</span><small class="mt-1 block text-[10px] font-medium">Bank transfer</small></button>
+</div>
+<section class="rounded-xl border border-orange-200 bg-orange-50 p-4 text-center text-xs text-zinc-700" data-payment-panel="gcash">
+<img alt="GCash QR code for the ₱300 reservation fee" class="payment-qr-image" src="assets/gcash-qr.png"/>
+<p class="mt-3 font-black text-zinc-900">GCash payment details</p>
+<p class="mt-1 text-[11px] leading-relaxed">Scan this QR to pay the ₱300 reservation fee.</p>
+</section>
+<section class="hidden rounded-xl border border-orange-200 bg-orange-50 p-4 text-center text-xs text-zinc-700" data-payment-panel="maribank" hidden="">
+<img alt="MariBank QR code for the ₱300 reservation fee" class="payment-qr-image" src="assets/maribank-qr.png"/>
+<p class="mt-3 font-black text-zinc-900">MariBank transfer details</p>
+<p class="mt-1 text-[11px] leading-relaxed">Scan this QR to pay the ₱300 reservation fee.</p>
+</section>
+</section>
+<div class="booking-step-actions mt-5">
+<button class="hidden" id="booking-back-btn" type="button">Back</button>
+<button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
+<button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
+<span>CONTINUE TO MESSENGER</span>
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.218V22l3.39-1.86c.92.255 1.89.394 2.875.394 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.05 12.394l-2.67-2.85-5.21 2.85 5.73-6.08 2.74 2.85 5.14-2.85-5.73 6.08z"></path>
+</svg>
+</button>
+</div>
+</form>
+<section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
+<div class="rounded-xl border border-orange-200 bg-white p-4 text-zinc-900">
+<h4 class="font-black">Booking details ready</h4>
+<p class="mt-2 rounded-lg bg-orange-50 px-3 py-2 text-xs text-zinc-800">Booking reference: <strong class="text-brand-orange" id="booking-reference">—</strong></p>
+<p class="mt-1 text-xs">Your booking is saved. <strong id="confirmation-total">Delivery fee pending</strong>. Delivery is free within 3 km from Tibungco. We will check your Google Maps pin, send any farther-location fee through Messenger, then verify your payment and valid ID.</p>
+</div>
+<ol class="list-decimal space-y-2 pl-5 text-xs text-zinc-700">
+<li>Open Facebook Messenger using the button below.</li>
+<li>Send your booking reference, name, selected package, rental date, Facebook profile, and email.</li>
+<li>After booking, attach your proof of payment and a clear photo of your valid government ID.</li>
+</ol>
+<a class="block w-full rounded-xl bg-brand-orange px-4 py-3 text-center text-xs font-black tracking-wider text-white" href="https://www.facebook.com/jmkaraokerental" id="booking-messenger-link" rel="noopener noreferrer" target="_blank">OPEN FACEBOOK TO SEND REQUIREMENTS</a>
+<button class="w-full rounded-xl border border-zinc-300 px-4 py-3 text-xs font-black text-zinc-700" id="edit-booking-btn" type="button">EDIT BOOKING DETAILS</button>
+</section>
+</div>
+</dialog>
+<!-- END: Interactive Booking Modal / Drawer Sheet -->
+<!-- BEGIN: Footer Section -->
+<footer class="bg-white border-t-4 border-brand-orange pt-9 pb-24 px-5 text-center" data-purpose="page-footer" id="contact">
+<div class="max-w-lg mx-auto flex flex-col items-center">
+<!-- Logo Matching Snapshot 1 & 3 -->
+<div class="flex items-center gap-2 mb-4">
+<img alt="JM Karaoke Rental Davao logo" class="w-10 h-10 rounded-full object-cover shadow-lg shadow-orange-500/20" src="https://scontent.fdvo1-2.fna.fbcdn.net/v/t39.30808-6/790113779_122094393099472482_725964795810205353_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx1040x1062&amp;ctp=s1040x1062&amp;_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=6ee11a&amp;_nc_eui2=AeF8gv7IzDFfreRCVGL7NirZ8WpPAq9XKdLxak8Cr1cp0lGnIsyVDOmyEcuW4rkRaxcKZP_Ri50F0JCxCn8W5Ha_&amp;_nc_ohc=9ZIJDSQZOKwQ7kNvwEjuh4T&amp;_nc_oc=AdpmJFEG66CotiH1tgQsFehf9VsfSIfGed0_a66hFPhT-qFeKM-3O6GBYqrhDqTQ_I8q0H_o9sP3GAwgOTTL-pIQ&amp;_nc_zt=23&amp;_nc_ht=scontent.fdvo1-2.fna&amp;_nc_gid=80CiMfdR7DqiamG3OjNuSg&amp;_nc_ss=7b2a8&amp;oh=00_AQJonWMINu1F_v5Z7As-9RiqJYkajgdNl34mTzkQZMKoRQ&amp;oe=6AAEF57E"/>
+<div class="text-left leading-none">
+<span class="text-sm font-black uppercase text-zinc-900 block">KARAOKE</span>
+<span class="text-[10px] font-extrabold tracking-wider uppercase text-brand-orange">RENTAL DAVAO</span>
+</div>
+</div>
+      <p class="text-xs leading-relaxed text-zinc-600 max-w-[17rem] mb-5">
+        Bringing high quality JBL audio, ad-free karaoke music, and disco vibe straight to your doorsteps in Davao City!
+      </p>
+      <a class="footer-call-link mb-5 inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-bold transition" href="tel:09661958458">
+        <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516 5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        Call 0966 195 8458
+      </a>
+<!-- Social & Direct Messenger Links -->
+<p class="text-[10px] font-black tracking-[0.18em] text-brand-orange uppercase mb-3">Follow our updates</p>
+<div class="flex items-center justify-center gap-2.5 mb-6">
+<!-- Facebook Icon -->
+<a aria-label="Facebook Page" class="w-10 h-10 rounded-xl border border-orange-200 bg-orange-50 text-brand-orange flex items-center justify-center hover:bg-orange-100 active:scale-95 transition" href="https://www.facebook.com/jmkaraokerental" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.6 5H18V0h-3.808C10.595 0 9 1.583 9 4.615V8z"></path>
+</svg>
+</a>
+<!-- TikTok Icon -->
+<a aria-label="TikTok Account" class="w-10 h-10 rounded-xl border border-orange-200 bg-orange-50 text-brand-orange flex items-center justify-center hover:bg-orange-100 active:scale-95 transition" href="https://www.tiktok.com/@jmkaraokerentaldavao?fbclid=IwY2xjawUV9YhwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMVR4VmM1RUZWVTRYdnNBMmxzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeqassX3z81vpmjUJX8sprhyaRk1lTMV__ShdZQbQuW5fFnFoWQz7OUfkb01c_aem_Qk_rqs8gtA8a8jp9-AvNiw" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.16 1.18 2.09 2.35 2.27.7.13 1.43.04 2.09-.23.96-.4 1.61-1.28 1.76-2.31.06-1.02.04-2.05.04-3.07V.02h.02z"></path>
+</svg>
+</a>
+<!-- Facebook booking link -->
+<a class="bg-brand-orange text-white hover:bg-brand-orangeDark active:scale-95 font-black text-[11px] uppercase tracking-wide px-4 py-3 rounded-xl flex items-center gap-1.5 shadow-lg shadow-orange-500/20 transition" href="https://www.facebook.com/jmkaraokerental" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 text-brand-orange fill-current" viewbox="0 0 24 24">
+<path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.218V22l3.39-1.86c.92.255 1.89.394 2.875.394 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.05 12.394l-2.67-2.85-5.21 2.85 5.73-6.08 2.74 2.85 5.14-2.85-5.73 6.08z"></path>
+</svg>
+<span>BOOK VIA FACEBOOK</span>
+</a>
+</div>
+<div class="w-full border-t border-orange-100 pt-4 text-[10px] leading-relaxed text-zinc-400 space-y-1">
+<p>© 2025 JM Karaoke Rental Davao</p>
+<p>Door-to-door delivery and complete setup across Davao City.</p>
+</div>
+</div>
+</footer>
+<!-- END: Footer Section -->
+<!-- BEGIN: Sticky Mobile Floating Bottom Conversion Bar -->
+<aside class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-lg border-t border-orange-200 px-4 py-2.5 shadow-[0_-5px_20px_rgba(0,0,0,0.08)] max-w-lg mx-auto" data-purpose="sticky-mobile-cta">
+<div class="flex items-center gap-2.5">
+<!-- Large Primary CTA Button -->
+<button class="flex-1 bg-brand-orange hover:bg-brand-orangeDark active:scale-95 text-white font-black text-xs uppercase tracking-wider py-3 px-4 rounded-xl shadow-md shadow-orange-500/30 flex items-center justify-between transition" id="floating-book-btn" type="button">
+<span class="flex flex-col text-left leading-none">
+<span class="text-[10px] text-orange-100 font-normal">Fast Reservation</span>
+<span class="text-xs font-black">BOOK KARAOKE NOW</span>
+</span>
+<span class="bg-white/20 text-white text-[11px] font-bold px-2 py-1 rounded-md">
+          From ₱599
+        </span>
+</button>
+</div>
+</aside>
+<!-- END: Sticky Mobile Floating Bottom Conversion Bar -->
+<!-- BEGIN: Interactive Scripts -->
+<script data-purpose="mobile-interactions">
+    // Navigation toggle functionality
+    const menuBtn = document.getElementById('menu-button');
+    const navPanel = document.getElementById('mobile-nav-panel');
+
+    menuBtn.addEventListener('click', () => {
+      navPanel.classList.toggle('hidden');
+    });
+
+    // Close mobile nav when link clicked
+    navPanel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navPanel.classList.add('hidden');
+      });
+    });
+
+    // Booking modal controls
+    const bookingModal = document.getElementById('booking-modal');
+    const openModalBtn = document.getElementById('floating-book-btn');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const packageChoiceSelect = document.getElementById('form-package-choice');
+    const durationChoiceSelect = document.getElementById('form-duration-choice');
+    const bookingForm = document.getElementById('quick-booking-form');
+    const bookingConfirmation = document.getElementById('booking-confirmation');
+    const editBookingBtn = document.getElementById('edit-booking-btn');
+    const bookingDate = document.getElementById('booking-date');
+    const bookingSteps = [...document.querySelectorAll('[data-booking-step]')];
+    const stepIndicators = [...document.querySelectorAll('[data-step-indicator]')];
+    const stepLines = [...document.querySelectorAll('.booking-progress-line')];
+    const bookingBackBtn = document.getElementById('booking-back-btn');
+    const bookingNextBtn = document.getElementById('booking-next-btn');
+    const bookingSubmitBtn = document.getElementById('booking-submit-btn');
+    let currentBookingStep = 1;
+    let pricing = {
+      'set-a': { 12: 599, 22: 799, label: 'SET A · JBL 520 Karaoke Set' },
+      'set-b': { 12: 899, 22: 1199, label: 'SET B · Complete Karaoke Set' },
+    };
+    const reservationFee = 300;
+    const securityDeposit = 1000;
+    const peso = (amount) => `₱${amount.toLocaleString('en-PH')}`;
+    const selectedPackageDurations = {};
+    const durationOptions = [...document.querySelectorAll('[data-duration-choice]')];
+    const paymentMethodOptions = [...document.querySelectorAll('[data-payment-method]')];
+    const paymentPanels = [...document.querySelectorAll('[data-payment-panel]')];
+    let selectedPaymentMethod = 'GCash';
+    const packageCards = document.getElementById('package-cards');
+    const availabilityNote = document.getElementById('availability-note');
+    let unavailableByPackage = {};
+    const escapeHtml = (value) => String(value || '').replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+
+    function addCustomPackageCard(item) {
+      const card = document.createElement('article');
+      card.className = 'bg-white rounded-2xl p-5 border border-orange-200/80 shadow-card-soft transition-all hover:border-brand-orange/50';
+      card.dataset.purpose = 'package-item-custom';
+      const features = item.features.map(feature => `<div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">✓</span><span class="font-semibold text-zinc-900">${escapeHtml(feature)}</span></div>`).join('');
+      card.innerHTML = `<div class="package-card-heading flex items-start justify-between mb-3"><div><span class="text-xs font-black tracking-widest text-brand-orange uppercase">${escapeHtml(item.code)}</span><h3 class="text-lg font-black text-brand-charcoal uppercase leading-snug">${escapeHtml(item.name)}</h3><p class="package-card-description">${escapeHtml(item.description)}</p></div><span class="package-tier-badge">New set</span></div><div class="space-y-2.5 py-3 border-y border-zinc-100 text-xs text-zinc-700">${features}</div><div class="package-prices grid grid-cols-2 gap-2 mt-4 mb-4"><button aria-pressed="false" class="duration-option bg-zinc-100/90 rounded-xl p-2.5 text-center border border-zinc-200" data-duration="12" type="button"><span class="block text-[10px] font-medium text-zinc-500 uppercase">12 hours</span><span class="text-lg font-black text-brand-charcoal">₱${Number(item.prices[12]).toLocaleString('en-PH')}</span></button><button aria-pressed="false" class="duration-option bg-orange-50/80 rounded-xl p-2.5 text-center border border-orange-200" data-duration="22" type="button"><span class="block text-[10px] font-medium text-brand-orange uppercase">22 hours</span><span class="text-lg font-black text-brand-orangeDark">₱${Number(item.prices[22]).toLocaleString('en-PH')}</span></button></div><a class="w-full py-3 px-4 bg-brand-orange hover:bg-brand-orangeDark active:scale-95 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md shadow-orange-500/25 flex items-center justify-center gap-1.5 transition" href="#booking"><span>BOOK ${escapeHtml(item.code)}</span><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>`;
+      const bookButton = card.querySelector('a');
+      card.querySelectorAll('.duration-option').forEach((option) => option.addEventListener('click', () => {
+        const duration = option.dataset.duration;
+        selectedPackageDurations[item.id] = duration;
+        card.querySelectorAll('.duration-option').forEach((choice) => {
+          const selected = choice === option;
+          choice.classList.toggle('is-selected', selected);
+          choice.setAttribute('aria-pressed', String(selected));
+        });
+        bookButton.dataset.bookDuration = duration;
+      }));
+      bookButton.addEventListener('click', (event) => { event.preventDefault(); openBooking(item.id, bookButton.dataset.bookDuration); });
+      packageCards.appendChild(card);
+    }
+
+    function syncExistingPackageCard(item) {
+      const suffix = item.id === 'set-a' ? 'a' : item.id === 'set-b' ? 'b' : '';
+      const card = suffix && document.querySelector(`[data-purpose="package-item-${suffix}"]`);
+      if (!card) return;
+      const heading = card.querySelector('.package-card-heading');
+      heading.querySelector('span').textContent = item.code;
+      heading.querySelector('h3').textContent = item.name;
+      heading.querySelector('.package-card-description').textContent = item.description;
+      const featureList = card.querySelector('div[class*="border-y"]');
+      featureList.innerHTML = item.features.map(feature => `<div class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-brand-orange text-white flex items-center justify-center flex-shrink-0">✓</span><span class="font-semibold text-zinc-900">${escapeHtml(feature)}</span></div>`).join('');
+      const priceButtons = card.querySelectorAll('[data-duration]');
+      priceButtons.forEach(button => { button.querySelector('span:last-child').textContent = `₱${Number(item.prices[button.dataset.duration]).toLocaleString('en-PH')}`; });
+      card.querySelector('[data-book-package] span').textContent = `BOOK ${item.code}`;
+    }
+
+    async function loadPackages() {
+      try {
+        const response = await fetch('/api/packages');
+        if (!response.ok) return;
+        const data = await response.json();
+        const currentChoice = packageChoiceSelect.value;
+        pricing = Object.fromEntries(data.packages.map(item => [item.id, { 12: Number(item.prices[12]), 22: Number(item.prices[22]), label: item.label }]));
+        packageChoiceSelect.innerHTML = data.packages.map(item => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.code)}: ${escapeHtml(item.name)}</option>`).join('');
+        packageChoiceSelect.value = pricing[currentChoice] ? currentChoice : data.packages[0]?.id || '';
+        data.packages.filter(item => ['set-a', 'set-b'].includes(item.id)).forEach(syncExistingPackageCard);
+        data.packages.filter(item => !['set-a', 'set-b'].includes(item.id)).forEach(addCustomPackageCard);
+        updatePriceSummary();
+        updateAvailabilityNote();
+      } catch { /* The existing sets remain available if the package list cannot load. */ }
+    }
+
+    function updateAvailabilityNote() {
+      const date = bookingDate.value;
+      const packageId = packageChoiceSelect.value;
+      if (!date || !packageId) {
+        availabilityNote.textContent = 'Choose a package and date to check availability.';
+        availabilityNote.className = 'mt-1 text-[10px] font-semibold text-zinc-500';
+        bookingDate.setCustomValidity('');
+        return;
+      }
+      if ((unavailableByPackage[packageId] || []).includes(date)) {
+        availabilityNote.textContent = 'This set is already reserved on this date. Please choose another date or set.';
+        availabilityNote.className = 'mt-1 text-[10px] font-bold text-red-600';
+        bookingDate.setCustomValidity('This set is not available on the selected date.');
+        return;
+      }
+      availabilityNote.textContent = 'This set is available for your selected date.';
+      availabilityNote.className = 'mt-1 text-[10px] font-semibold text-emerald-700';
+      bookingDate.setCustomValidity('');
+    }
+
+    async function loadAvailability() {
+      try {
+        const response = await fetch('/api/availability');
+        if (response.ok) unavailableByPackage = (await response.json()).unavailable || {};
+      } finally {
+        updateAvailabilityNote();
+      }
+    }
+
+    function updatePriceSummary() {
+      const selectedPackage = pricing[packageChoiceSelect.value];
+      const duration = Number(durationChoiceSelect.value);
+      const rentalFee = selectedPackage[duration];
+
+      if (!rentalFee) {
+        document.getElementById('selected-package-label').textContent = `${selectedPackage.label} · Choose duration`;
+        document.getElementById('rental-price').textContent = '—';
+        document.getElementById('rental-fee').textContent = '—';
+        document.getElementById('booking-total').textContent = '—';
+        document.getElementById('confirmation-total').textContent = '—';
+        document.getElementById('review-total').textContent = '—';
+        return;
+      }
+      const subtotalBeforeDelivery = rentalFee + securityDeposit;
+
+      document.getElementById('selected-package-label').textContent = `${selectedPackage.label} · ${duration} Hours`;
+      document.getElementById('rental-price').textContent = peso(rentalFee);
+      document.getElementById('rental-fee').textContent = peso(rentalFee);
+      document.getElementById('booking-total').textContent = `${peso(subtotalBeforeDelivery)} + delivery`;
+      document.getElementById('confirmation-total').textContent = 'Delivery fee pending';
+      document.getElementById('review-total').textContent = peso(reservationFee);
+    }
+
+    function updateBookingReview() {
+      const selectedPackage = pricing[packageChoiceSelect.value];
+      const duration = durationChoiceSelect.value;
+      const selectedDate = bookingDate.value
+        ? new Date(`${bookingDate.value}T00:00:00`).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' })
+        : 'Not selected';
+
+      document.getElementById('review-package').textContent = `${selectedPackage.label} · ${duration} Hours`;
+      document.getElementById('review-date').textContent = selectedDate;
+      document.getElementById('review-customer').textContent = document.getElementById('customer-name').value || 'Not entered';
+    }
+
+    function setBookingStep(step) {
+      currentBookingStep = step;
+      bookingSteps.forEach((panel) => {
+        const isCurrent = Number(panel.dataset.bookingStep) === step;
+        panel.hidden = !isCurrent;
+        panel.classList.toggle('hidden', !isCurrent);
+      });
+      stepIndicators.forEach((indicator) => {
+        const indicatorStep = Number(indicator.dataset.stepIndicator);
+        indicator.classList.toggle('is-active', indicatorStep === step);
+        indicator.classList.toggle('is-complete', indicatorStep < step);
+      });
+      stepLines.forEach((line, index) => line.classList.toggle('is-complete', index < step - 1));
+      bookingBackBtn.classList.toggle('hidden', step === 1);
+      bookingNextBtn.classList.toggle('hidden', step === 5);
+      bookingSubmitBtn.classList.toggle('hidden', step !== 5);
+      bookingModal.scrollTop = 0;
+    }
+
+    function validateCurrentStep() {
+      const currentPanel = bookingSteps.find((panel) => Number(panel.dataset.bookingStep) === currentBookingStep);
+      const invalidField = [...currentPanel.querySelectorAll('input, select, textarea')]
+        .find((field) => !field.checkValidity());
+
+      if (invalidField) {
+        invalidField.reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    function openBooking(selectedPackage, selectedDuration) {
+      if (selectedPackage) {
+        packageChoiceSelect.value = selectedPackage;
+        durationChoiceSelect.value = selectedDuration || selectedPackageDurations[selectedPackage] || '';
+      }
+      bookingForm.classList.remove('hidden');
+      bookingConfirmation.classList.add('hidden');
+      updatePriceSummary();
+      updateAvailabilityNote();
+      setBookingStep(1);
+      bookingModal.showModal();
+    }
+
+    bookingDate.min = new Date().toISOString().split('T')[0];
+    openModalBtn.addEventListener('click', () => openBooking());
+    durationOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        const selectedPackage = option.dataset.durationChoice;
+        const selectedDuration = option.dataset.duration;
+        selectedPackageDurations[selectedPackage] = selectedDuration;
+        durationOptions.forEach((choice) => {
+          const isSelected = choice.dataset.durationChoice === selectedPackage && choice.dataset.duration === selectedDuration;
+          choice.classList.toggle('is-selected', isSelected);
+          choice.setAttribute('aria-pressed', String(isSelected));
+        });
+        const bookButton = document.querySelector(`[data-book-package="${selectedPackage}"]`);
+        if (bookButton) {
+          bookButton.dataset.bookDuration = selectedDuration;
+        }
+      });
+    });
+
+    paymentMethodOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        const method = option.dataset.paymentMethod;
+        selectedPaymentMethod = method === 'maribank' ? 'MariBank' : 'GCash';
+        paymentMethodOptions.forEach((choice) => {
+          const isSelected = choice.dataset.paymentMethod === method;
+          choice.classList.toggle('is-selected', isSelected);
+          choice.setAttribute('aria-pressed', String(isSelected));
+        });
+        paymentPanels.forEach((panel) => {
+          const isSelected = panel.dataset.paymentPanel === method;
+          panel.hidden = !isSelected;
+          panel.classList.toggle('hidden', !isSelected);
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-book-package]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        openBooking(button.dataset.bookPackage, button.dataset.bookDuration);
+      });
+    });
+    packageChoiceSelect.addEventListener('change', () => { updatePriceSummary(); updateAvailabilityNote(); });
+    durationChoiceSelect.addEventListener('change', updatePriceSummary);
+    bookingDate.addEventListener('change', updateAvailabilityNote);
+    bookingNextBtn.addEventListener('click', () => {
+      if (!validateCurrentStep()) {
+        return;
+      }
+      if (currentBookingStep === 4) {
+        updateBookingReview();
+      }
+      setBookingStep(Math.min(currentBookingStep + 1, 5));
+    });
+    bookingBackBtn.addEventListener('click', () => setBookingStep(Math.max(currentBookingStep - 1, 1)));
+    updatePriceSummary();
+    loadPackages();
+    loadAvailability();
+
+    closeModalBtn.addEventListener('click', () => {
+      bookingModal.close();
+    });
+
+    // Close when clicking modal backdrop
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) {
+        bookingModal.close();
+      }
+    });
+
+    async function saveBookingToAdmin() {
+      const selectedPackage = pricing[packageChoiceSelect.value];
+      const payload = {
+        packageId: packageChoiceSelect.value,
+        package: selectedPackage.label,
+        duration: `${durationChoiceSelect.value} hours`,
+        date: bookingDate.value,
+        customerName: document.getElementById('customer-name').value,
+        address: document.getElementById('delivery-address').value,
+        mapLink: document.getElementById('maps-link').value,
+        facebook: document.getElementById('facebook-profile').value,
+        email: document.getElementById('customer-email').value,
+        paymentMethod: selectedPaymentMethod,
+        total: document.getElementById('booking-total').textContent,
+      };
+
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(error.error || 'Unable to save booking. Please try again.');
+      }
+      return response.json();
+    }
+
+    // The site validates booking details locally; supporting documents are sent in Messenger after booking.
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      bookingSubmitBtn.disabled = true;
+      try {
+        const savedBooking = await saveBookingToAdmin();
+        document.getElementById('booking-reference').textContent = savedBooking.id;
+        bookingForm.classList.add('hidden');
+        bookingConfirmation.classList.remove('hidden');
+        await loadAvailability();
+      } catch (error) {
+        window.alert(error.message);
+      } finally {
+        bookingSubmitBtn.disabled = false;
+      }
+    });
+
+    editBookingBtn.addEventListener('click', () => {
+      bookingConfirmation.classList.add('hidden');
+      bookingForm.classList.remove('hidden');
+      setBookingStep(1);
+    });
+  </script>
+<!-- END: Interactive Scripts -->
+</body></html>
