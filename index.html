@@ -1563,6 +1563,15 @@
 <section class="hidden rounded-xl border border-orange-200 bg-orange-50 p-4 text-center" data-payment-panel="maribank" hidden=""><img alt="MariBank QR code for the ₱300 reservation fee" class="payment-qr-image" src="assets/maribank-qr.png"/></section>
 <aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-800" id="messenger-requirements"><strong>After saving:</strong> open Messenger and send your ₱300 proof of payment plus a clear photo of your valid government ID.</aside>
 </div>
+</section>
+<div class="booking-step-actions mt-5">
+<button class="hidden" id="booking-back-btn" type="button">Back</button>
+<button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
+<button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
+<span>CONTINUE</span>
+</button>
+</div>
+</form>
 <section class="hidden space-y-4 text-sm" id="booking-confirmation" aria-live="polite">
 <div class="confirmation-card">
 <p class="confirmation-eyebrow">Check before sending</p>
@@ -1578,15 +1587,6 @@
 <div class="confirmation-tools"><p>Keep a copy of your booking.</p><div class="confirmation-tool-actions"><button id="edit-booking-details" type="button">EDIT</button><button id="copy-booking-details" type="button">COPY</button><button id="download-booking-details" type="button">PDF</button></div></div>
 <button id="booking-messenger-link" type="button">GO TO MESSENGER</button>
 </section>
-</section>
-<div class="booking-step-actions mt-5">
-<button class="hidden" id="booking-back-btn" type="button">Back</button>
-<button class="ml-auto" id="booking-next-btn" type="button">Continue</button>
-<button class="ml-auto hidden bg-brand-orange text-white" id="booking-submit-btn" type="submit">
-<span>CONTINUE</span>
-</button>
-</div>
-</form>
 </div>
 </dialog>
 <!-- END: Interactive Booking Modal / Drawer Sheet -->
@@ -1983,13 +1983,13 @@
       e.preventDefault();
       completedBooking = currentBookingDetails('Created when you open Messenger');
       document.getElementById('booking-reference').textContent = completedBooking.id;
-      document.getElementById('payment-stage-content').classList.add('hidden');
+      bookingForm.classList.add('hidden');
       bookingBackBtn.classList.add('hidden');
       bookingNextBtn.classList.add('hidden');
       bookingSubmitBtn.classList.add('hidden');
       bookingConfirmation.classList.remove('hidden');
     });
-    editBookingDetailsBtn.addEventListener('click', () => { bookingConfirmation.classList.add('hidden'); document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
+    editBookingDetailsBtn.addEventListener('click', () => { bookingConfirmation.classList.add('hidden'); bookingForm.classList.remove('hidden'); document.getElementById('payment-stage-content').classList.remove('hidden'); setBookingStep(2); });
     bookingMessengerBtn.addEventListener('click', async () => {
       if (bookingMessengerBtn.disabled) return;
       if (bookingSaved) { window.open('https://www.facebook.com/jmkaraokerental', '_blank'); return; }
