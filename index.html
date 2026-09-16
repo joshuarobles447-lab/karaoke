@@ -1449,7 +1449,7 @@
 <div class="booking-progress-line"></div>
 <div class="booking-progress-step" data-step-indicator="6"><span>6</span><small>Confirm</small></div>
 </nav>
-<form class="text-xs" id="quick-booking-form">
+<form autocomplete="off" class="text-xs" id="quick-booking-form">
 <section class="booking-step space-y-3.5" data-booking-step="1">
 <p class="booking-step-title"><span>Step 1 of 6</span>Choose your karaoke package</p>
 <div>
@@ -1493,15 +1493,15 @@
 <p class="booking-step-title"><span>Step 2 of 6</span>Your contact and delivery details</p>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="customer-name">Your Full Name</label>
-<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="customer-name" placeholder="e.g. Maria Santos" required="" type="text"/>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="customer-name" placeholder="e.g. Maria Santos" required="" type="text" autocomplete="off" spellcheck="false"/>
 </div>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="delivery-address">Delivery Address (Davao City)</label>
-<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="delivery-address" placeholder="Barangay, Street, Landmark" required="" type="text"/>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="delivery-address" placeholder="Barangay, Street, Landmark" required="" type="text" autocomplete="off" spellcheck="false"/>
 </div>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="maps-link">Google Maps Location Link</label>
-<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="maps-link" placeholder="Paste your shared Google Maps location link" required="" type="url"/>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="maps-link" placeholder="Paste your shared Google Maps location link" required="" type="url" autocomplete="off" spellcheck="false"/>
 <p class="mt-1 text-[10px] text-zinc-500">Open Google Maps → Share → Copy link, then paste it here.</p>
 </div>
 <aside class="rounded-xl border border-orange-200 bg-orange-50 p-3 text-[11px] leading-relaxed text-zinc-700" id="customer-delivery-guide">
@@ -1511,11 +1511,11 @@
 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="facebook-profile">Existing Facebook Profile</label>
-<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="facebook-profile" placeholder="facebook.com/yourprofile" required="" type="text"/>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="facebook-profile" placeholder="facebook.com/yourprofile" required="" type="text" autocomplete="off" spellcheck="false"/>
 </div>
 <div>
 <label class="block font-bold text-zinc-700 mb-1" for="facebook-name">Facebook Name</label>
-<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="facebook-name" placeholder="Name shown on Facebook" required="" type="text"/>
+<input class="w-full rounded-xl border-zinc-300 text-xs py-2.5 focus:border-brand-orange focus:ring-brand-orange" id="facebook-name" placeholder="Name shown on Facebook" required="" type="text" autocomplete="off" spellcheck="false"/>
 </div>
 </div>
 </section>
